@@ -1,0 +1,1822 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>未启之音</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: single-page neon site that mirrors the group's own homepage (navy ground, cyan eyebrows, outlined OVERTURE, violet gradient pills, glass cards). Sections follow its order: hero, logo, members, events, goods, tickets. Deliberately one dark look. */
+:root{
+  color-scheme:dark;
+  --bg:#08091F; --card:rgba(255,255,255,.045); --card-2:rgba(255,255,255,.075);
+  --text:#F3F4FF; --muted:#A9B0E3; --line:rgba(150,130,255,.30);
+  --cyan:#35E3F5; --violet:#8B5CFF; --violet-d:#6C3BF5; --magenta:#F052C8; --on-bright:#08091F;
+  --cheer:#FF5C93;
+  --f-display:"Sora","Noto Sans SC","Noto Sans KR","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --f-body:"Noto Sans SC","Noto Sans KR","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+html{scroll-behavior:smooth;background:var(--bg)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  background:radial-gradient(900px 520px at 88% -4%,rgba(108,59,245,.36),transparent 65%),radial-gradient(760px 520px at -6% 16%,rgba(36,70,220,.28),transparent 65%),var(--bg);
+  background-repeat:no-repeat;color:var(--text);font:400 1rem/1.8 var(--f-body);
+  padding-block:0 4rem;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+*,*::before,*::after{box-sizing:border-box}
+a{color:inherit}
+p{margin:0}
+img{display:block;height:auto}
+button{font-family:inherit;color:inherit}
+.wrap{max-width:1160px;margin-inline:auto}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+.eyebrow{font:700 .75rem/1.6 var(--f-display);letter-spacing:.26em;text-transform:uppercase;color:var(--cyan)}
+.eyebrow.m{color:var(--muted)}
+h1,h2,h3,h4{margin:0}
+h2{font:800 clamp(1.8rem,4.4vw,2.9rem)/1.25 var(--f-display);text-wrap:balance;margin-top:.4rem}
+.sub{margin-top:.9rem;max-width:40em;color:var(--muted)}
+.sec{margin-top:clamp(4rem,9vw,6.5rem)}
+.glass{background:var(--card);border:1px solid var(--line);border-radius:20px}
+
+/* header */
+html[lang="ko"] body{word-break:keep-all;overflow-wrap:break-word}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang button{border:0;background:transparent;padding:.35rem .8rem;font:600 .75rem var(--f-display);letter-spacing:.04em;cursor:pointer;min-height:2rem;color:var(--muted)}
+.lang button[aria-pressed="true"]{background:linear-gradient(90deg,var(--violet-d),#B04BFF);color:#fff}
+.top{row-gap:.4rem}
+.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.25rem 1.5rem;padding-block:1.1rem;border-bottom:1px solid rgba(150,130,255,.14)}
+.mark{font:800 1.15rem/1 var(--f-display);letter-spacing:.14em;text-decoration:none;text-transform:uppercase;text-shadow:0 0 18px rgba(139,92,255,.6)}
+.mark span{color:var(--cyan)}
+.top nav{display:flex;flex-wrap:wrap;gap:.1rem 1.5rem;font:600 .8125rem var(--f-display);letter-spacing:.04em}
+.top nav a{text-decoration:none;padding:.55rem 0;color:var(--muted)}
+.top nav a:hover{color:var(--text)}
+.ribbon{margin-top:1rem;border:1px solid rgba(53,227,245,.45);border-radius:14px;background:rgba(53,227,245,.07);color:var(--text);padding:.65rem 1rem;font-size:.8125rem;line-height:1.7}
+.ribbon b{color:var(--cyan);font-weight:700}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,64px);align-items:center;padding-top:clamp(2rem,5vw,3.6rem)}
+.hero-copy{min-width:0}
+h1{display:flex;flex-direction:column;margin:.9rem 0 1.4rem;font:800 clamp(3rem,9.4vw,6.2rem)/.98 var(--f-display);letter-spacing:-.01em;text-transform:uppercase}
+h1 .l2{color:var(--bg);-webkit-text-stroke:3px var(--magenta);paint-order:stroke fill;text-shadow:0 0 28px rgba(240,82,200,.55)}
+.lede{max-width:34em;color:var(--muted);font-size:1.0625rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.8rem}
+.btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:999px;padding:.95rem 1.7rem;font:700 1rem/1 var(--f-body);text-decoration:none;cursor:pointer;color:#fff;background:linear-gradient(90deg,var(--violet-d),#B04BFF);box-shadow:0 10px 30px rgba(122,70,255,.45);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(122,70,255,.6)}
+.btn.ghost{background:transparent;border:1px solid rgba(160,140,255,.55);box-shadow:none}
+.btn.ghost:hover{background:rgba(139,92,255,.14);box-shadow:none}
+.count{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:2.2rem;max-width:440px}
+.count div{padding:.7rem .7rem .6rem;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:14px}
+.count b{display:block;font:700 clamp(1.7rem,6vw,2.4rem)/1.1 var(--f-mono);font-variant-numeric:tabular-nums}
+.count span{font:600 .6875rem var(--f-display);letter-spacing:.18em;color:var(--muted)}
+.hero-art{position:relative;min-width:0;max-width:500px;justify-self:end;width:100%;margin:0}
+.hero-art .frame{position:relative;border-radius:28px;border:1px solid var(--line);overflow:hidden;box-shadow:0 0 70px rgba(139,92,255,.38);background:linear-gradient(160deg,#1b1450,#10113a)}
+.hero-art img{width:100%}
+.hero-art .tag{position:absolute;left:14px;bottom:14px;border:1px solid var(--cyan);border-radius:999px;background:rgba(8,9,31,.78);color:var(--cyan);padding:.3rem .8rem;font:700 .6875rem var(--f-display);letter-spacing:.18em}
+.spark{position:absolute;pointer-events:none;font-size:1.4rem;line-height:1}
+.cap{margin-top:.7rem;font-size:.75rem;line-height:1.7;color:var(--muted)}
+
+/* logo block + wave */
+.logo{text-align:center;margin-top:clamp(3rem,7vw,5rem)}
+.logo .big{font:800 clamp(2.6rem,9vw,5rem)/1.1 var(--f-display);font-style:italic;text-shadow:0 0 30px rgba(180,120,255,.8),0 0 70px rgba(108,59,245,.6)}
+.logo .tagl{margin-top:.6rem;font:700 .875rem var(--f-display);letter-spacing:.42em;color:var(--cyan)}
+.logo .zhn{margin-top:.3rem;color:var(--muted);font-size:.9375rem;letter-spacing:.3em}
+.logo .div{margin-top:1rem;letter-spacing:.8em;font-size:1.1rem}
+.logo .div i{font-style:normal}
+.logo .div i:nth-child(1){color:var(--cyan)}.logo .div i:nth-child(2){color:var(--magenta)}.logo .div i:nth-child(3){color:var(--violet)}.logo .div i:nth-child(4){color:var(--cyan)}
+#band{display:block;width:100%;height:96px;margin-top:1.4rem;touch-action:pan-y}
+
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px;margin:2.2rem 0 0;padding:0}
+.facts div{padding:1rem 1.1rem;min-width:0}
+.facts dt{font:700 .6875rem var(--f-display);letter-spacing:.2em;color:var(--cyan)}
+.facts dd{margin:.25rem 0 0;font:700 1.2rem/1.4 var(--f-display)}
+.facts dd small{display:block;margin-top:.15rem;font:400 .75rem/1.6 var(--f-body);color:var(--muted)}
+
+/* story */
+.split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,5vw,64px);margin-top:1.8rem;align-items:start}
+.split>*{min-width:0}
+.beats{list-style:none;margin:0;padding:0;display:grid;gap:1rem}
+.beats li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 1rem;padding:1.1rem 1.2rem}
+.beats .n{width:2.2rem;height:2.2rem;border-radius:50%;background:linear-gradient(135deg,var(--violet-d),var(--magenta));display:grid;place-items:center;font:700 .85rem var(--f-display);margin-top:.15rem}
+.beats h3{font:700 1.15rem/1.5 var(--f-body)}
+.beats .ko{font-size:.8125rem;color:var(--cyan);line-height:1.6}
+.beats .d{margin-top:.3rem;color:var(--muted);font-size:.9375rem;line-height:1.75}
+.pull{margin-top:1rem;padding:1.1rem 1.3rem;border-radius:20px;border:1px solid var(--line);background:linear-gradient(120deg,rgba(108,59,245,.28),rgba(240,82,200,.12))}
+.pull b{display:block;font:800 1.3rem/1.4 var(--f-body)}
+.pull span{font-size:.8125rem;color:var(--muted)}
+.photo{margin:0}
+.photo img{width:100%;border-radius:20px;border:1px solid var(--line)}
+.photo.tall img{aspect-ratio:3/3.2;object-fit:cover}
+
+/* members */
+.cast{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr));gap:18px;margin-top:1.8rem}
+.card{min-width:0;display:block;width:100%;text-align:left;padding:0;cursor:pointer;color:var(--text);border-radius:22px;overflow:hidden;transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px));transition:transform .14s ease-out,box-shadow .2s,border-color .2s}
+.card:hover{--ty:-4px}
+.card .ph{position:relative}
+.card img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.card .num{position:absolute;left:12px;top:12px;border-radius:999px;background:rgba(8,9,31,.78);border:1px solid var(--line);padding:.15rem .7rem;font:700 .75rem var(--f-display);letter-spacing:.16em;color:var(--cyan)}
+.card .body{display:block;padding:1rem 1.1rem 1.2rem}
+.card h3{font:800 1.7rem/1.15 var(--f-display);letter-spacing:.04em;text-transform:uppercase}
+.card .role{display:block;margin-top:.25rem;font:700 .6875rem var(--f-display);letter-spacing:.2em;color:var(--cyan)}
+.card .q{display:block;margin-top:.6rem;color:var(--muted);font-size:.9375rem;line-height:1.7}
+.card .ko{display:block;margin-top:.15rem;font-size:.75rem;color:rgba(169,176,227,.75)}
+.chip{display:inline-block;margin-top:.7rem;border:1px solid var(--c);color:var(--c);border-radius:999px;padding:.12rem .7rem;font:700 .6875rem var(--f-display);letter-spacing:.16em}
+.card[aria-pressed="true"]{border-color:var(--c);box-shadow:0 0 0 1px var(--c),0 0 36px color-mix(in srgb,var(--c) 45%,transparent)}
+.cheer{margin-top:1.4rem;display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;font:600 .8125rem var(--f-display);letter-spacing:.06em;color:var(--muted)}
+.cheer i{width:1.1rem;height:1.1rem;border-radius:50%;background:var(--cheer);box-shadow:0 0 14px var(--cheer);display:inline-block}
+
+/* events */
+.events{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:18px;margin-top:1.8rem}
+.ev{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1.2rem;padding:1.3rem;min-width:0}
+.date{width:5.2rem;border-radius:16px;background:linear-gradient(160deg,var(--violet-d),var(--magenta));text-align:center;padding:.7rem .3rem;align-self:start}
+.date small{display:block;font:700 .75rem var(--f-display);letter-spacing:.24em}
+.date b{display:block;font:800 2.5rem/1.05 var(--f-display)}
+.ev h3{font:800 1.3rem/1.35 var(--f-display)}
+.ev .meta{margin-top:.2rem;font:600 .75rem var(--f-display);letter-spacing:.1em;color:var(--cyan)}
+.ev p.d{margin-top:.5rem;color:var(--muted);font-size:.9375rem;line-height:1.75}
+.ev .btn{margin-top:1rem;padding:.7rem 1.3rem;font-size:.875rem}
+.sub2{margin-top:3rem;font:800 1.4rem/1.4 var(--f-display)}
+.rail{overflow-x:auto;margin-top:1.2rem;padding-bottom:.4rem}
+.railin{min-width:700px}
+.bar{display:flex;height:3.4rem;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.bar button{flex:0 0 auto;border:0;border-right:1px solid rgba(8,9,31,.7);padding:0 .3rem;font:700 .9375rem var(--f-body);cursor:pointer;overflow:hidden;white-space:nowrap;min-width:0;color:#fff}
+.bar button:last-child{border-right:0}
+.bar button.off{background:repeating-linear-gradient(135deg,rgba(255,255,255,.06) 0 7px,rgba(255,255,255,.015) 7px 14px);color:var(--muted);font-weight:500}
+.bar button.c1{background:linear-gradient(180deg,#7B4DFF,var(--violet-d))}
+.bar button.c2{background:linear-gradient(180deg,#F56ED2,#C93AA8);color:var(--on-bright)}
+.bar button[aria-pressed="true"]{background:var(--cyan);color:var(--on-bright);box-shadow:0 0 24px rgba(53,227,245,.7) inset}
+.ticks{position:relative;height:1.6rem;margin-top:.4rem;font:500 .75rem var(--f-mono);color:var(--muted)}
+.ticks span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap}
+.ticks span:first-child{transform:none}
+.ticks span:last-child{transform:translateX(-100%)}
+.swipe{display:none;font-size:.75rem;color:var(--muted);margin-top:.3rem}
+.spanel{margin-top:1rem;padding:1.2rem 1.3rem;display:grid;grid-template-columns:minmax(0,.7fr) repeat(3,minmax(0,1fr));gap:1rem 1.6rem}
+.spanel>*{min-width:0}
+.spanel h3{font:800 1.7rem/1.2 var(--f-body)}
+.spanel .t{font-size:.8125rem;color:var(--cyan)}
+.spanel dt{font:700 .6875rem var(--f-display);letter-spacing:.18em;color:var(--cyan)}
+.spanel dd{margin:.15rem 0 0}
+.spanel dl{margin:0}
+
+/* space */
+.archive{margin:0;padding:.5rem 1.2rem}
+.archive div{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-bottom:1px solid rgba(150,130,255,.16)}
+.archive div:last-child{border-bottom:0}
+.archive dt{font-size:.8125rem;color:var(--cyan);flex:none}
+.archive dd{margin:0;text-align:right;font-weight:500}
+.prose{display:grid;gap:1.1rem;max-width:36em;color:var(--muted)}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:1.8rem;align-items:start}
+.pair .photo img{aspect-ratio:3/2;object-fit:cover}
+.seg{display:inline-flex;margin-top:1.4rem;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.seg button{border:0;background:transparent;padding:.55rem 1.2rem;font:600 .8125rem var(--f-display);cursor:pointer;min-height:2.75rem;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:linear-gradient(90deg,var(--violet-d),#B04BFF);color:#fff}
+.mapbox{margin-top:.9rem;border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 0 50px rgba(108,59,245,.25)}
+.mapbox img{width:100%;aspect-ratio:2/1;object-fit:cover}
+.zones{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:1.2rem 0 0;padding:0;list-style:none}
+.zbtn{width:100%;height:100%;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:.6rem;text-align:left;border:1px solid var(--line);border-radius:16px;background:var(--card);padding:.65rem .8rem;cursor:pointer;min-height:3.4rem;color:var(--text)}
+.zbtn b{font:800 1.4rem/1 var(--f-display);color:var(--cyan)}
+.zbtn span{font-weight:700;font-size:.875rem;line-height:1.4}
+.zbtn[aria-pressed="true"]{border-color:var(--cyan);background:rgba(53,227,245,.12);box-shadow:0 0 24px rgba(53,227,245,.3)}
+.zpanel{margin-top:1.2rem;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);overflow:hidden}
+.zpanel>*{min-width:0}
+.zhead{padding:1.3rem;border-right:1px solid var(--line);background:linear-gradient(160deg,rgba(108,59,245,.3),transparent)}
+.zhead .big{font:800 4.2rem/1 var(--f-display);color:var(--cyan);text-shadow:0 0 24px rgba(53,227,245,.5)}
+.zhead h3{font:800 1.4rem/1.35 var(--f-body);margin-top:.3rem}
+.zhead p{font-size:.8125rem;color:var(--muted)}
+.zbody{margin:0;padding:.4rem 1.3rem}
+.zbody div{padding:.75rem 0;border-bottom:1px solid rgba(150,130,255,.16)}
+.zbody div:last-child{border-bottom:0}
+.zbody dt{font:700 .6875rem var(--f-display);letter-spacing:.18em;color:var(--cyan)}
+.zbody dd{margin:.1rem 0 0}
+
+/* goods */
+.goods{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px;margin-top:1.8rem}
+.good{padding:1.4rem;min-width:0;display:flex;flex-direction:column;gap:.5rem}
+.good svg{width:3.2rem;height:3.2rem;stroke:var(--cyan);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 8px rgba(53,227,245,.6))}
+.good h3{font:800 1.15rem/1.4 var(--f-display)}
+.good p{color:var(--muted);font-size:.9375rem;line-height:1.7}
+.good .pr{margin-top:auto;padding-top:.6rem;font:700 1.3rem var(--f-display);color:var(--magenta);font-variant-numeric:tabular-nums}
+
+/* cta */
+.cta{margin-top:clamp(4rem,9vw,6.5rem);text-align:center;padding:clamp(2rem,6vw,3.6rem) 1.2rem;border-radius:28px;border:1px solid var(--line);background:radial-gradient(600px 260px at 50% 0%,rgba(139,92,255,.35),transparent 70%),var(--card)}
+.cta h2{margin-top:0}
+.cta .btn{margin-top:1.4rem}
+
+/* tickets */
+.buy{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,5vw,56px);margin-top:1.8rem;align-items:start}
+.buy>*{min-width:0}
+fieldset{border:0;padding:0;margin:0;display:grid;gap:14px;min-width:0}
+legend{padding:0;margin-bottom:.7rem}
+.tier{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.15rem 1rem;align-items:baseline;border:1px solid var(--line);border-radius:18px;padding:1rem 1.2rem;cursor:pointer;background:var(--card)}
+.tier input{position:absolute;opacity:0;pointer-events:none}
+.tier b{font:700 1.2rem/1.3 var(--f-body)}
+.tier .pr{font:700 1.3rem/1 var(--f-display);font-variant-numeric:tabular-nums;color:var(--magenta)}
+.tier small{grid-column:1/-1;color:var(--muted);font-size:.875rem;line-height:1.65}
+.tier:has(input:checked){border-color:var(--cyan);background:rgba(53,227,245,.09);box-shadow:0 0 28px rgba(53,227,245,.25)}
+.tier:has(input:focus-visible){outline:3px solid var(--cyan);outline-offset:3px}
+.fields{display:grid;gap:14px;margin-top:1.4rem}
+.field{display:grid;gap:.35rem}
+.field label{font:600 .75rem var(--f-display);letter-spacing:.12em;color:var(--cyan)}
+.field input{width:100%;font:400 1rem var(--f-body);color:var(--text);background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:14px;padding:.75rem .9rem;min-height:2.9rem}
+.field input::placeholder{color:rgba(169,176,227,.6)}
+.field input:focus{border-color:var(--cyan);outline:none;box-shadow:0 0 0 3px rgba(53,227,245,.25)}
+.field small{font-size:.75rem;line-height:1.6;color:var(--muted)}
+.sum{padding:1.4rem}
+.sum dl{margin:0;display:grid;gap:.2rem}
+.sum dl div{display:flex;justify-content:space-between;gap:1rem;padding:.45rem 0;border-bottom:1px solid rgba(150,130,255,.16)}
+.sum dt{font-size:.8125rem;color:var(--muted)}
+.sum dd{margin:0;font-weight:700;text-align:right}
+.sum .total dd{font:800 1.9rem/1.1 var(--f-display);font-variant-numeric:tabular-nums;color:var(--cyan)}
+.qrow{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:1rem 0}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.qty button{width:2.75rem;height:2.75rem;border:0;background:transparent;font:700 1.2rem var(--f-mono);cursor:pointer}
+.qty button:hover{background:rgba(139,92,255,.25)}
+.qty output{min-width:2.4rem;text-align:center;font:700 1.05rem var(--f-mono)}
+.sum .btn{width:100%;justify-content:center;margin-top:.4rem}
+.demo{margin-top:1rem;font-size:.75rem;line-height:1.7;color:var(--muted)}
+
+.done{margin-top:2.4rem;border-radius:24px;border:1px solid var(--cyan);overflow:hidden;background:var(--card);box-shadow:0 0 60px rgba(53,227,245,.2)}
+.done[hidden]{display:none!important}
+.done-head{padding:1.3rem 1.5rem;background:linear-gradient(90deg,var(--violet-d),#B04BFF 60%,var(--magenta))}
+.done-head h3{font:800 clamp(1.5rem,3.6vw,2.1rem)/1.25 var(--f-body)}
+.done-head h3:focus{outline:none}
+.done-head p{font-size:.8125rem;opacity:.92}
+.done-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+.done-grid>*{min-width:0}
+.stub{padding:1.4rem;border-right:1px dashed var(--line)}
+.eticket{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.04)}
+.eticket .top2{padding:.7rem 1rem;background:var(--cheer);color:var(--on-bright);display:flex;justify-content:space-between;gap:1rem;font:700 .75rem var(--f-display);letter-spacing:.1em}
+.eticket h4{padding:1rem 1rem .2rem;font:800 1.7rem/1.2 var(--f-body)}
+.eticket dl{margin:0;padding:.4rem 1rem 1rem;display:grid;gap:.5rem}
+.eticket dl div{display:flex;justify-content:space-between;gap:1rem}
+.eticket dt{font-size:.75rem;color:var(--cyan);flex:none}
+.eticket dd{margin:0;text-align:right;font-weight:500;font-size:.9375rem}
+.barcode{height:44px;margin:0 1rem 1rem;opacity:.85;background:repeating-linear-gradient(90deg,var(--text) 0 2px,transparent 2px 4px,var(--text) 4px 5px,transparent 5px 9px,var(--text) 9px 12px,transparent 12px 14px)}
+.stub .ex{margin-top:.8rem;font-size:.75rem;color:var(--muted)}
+.msgs{padding:1.4rem}
+.tabs{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;max-width:100%}
+.tabs button{border:0;background:transparent;padding:.55rem 1.3rem;font:600 .8125rem var(--f-display);cursor:pointer;min-height:2.75rem;color:var(--muted)}
+.tabs button[aria-selected="true"]{background:linear-gradient(90deg,var(--violet-d),#B04BFF);color:#fff}
+.mail{margin-top:1rem;border-radius:16px;overflow:hidden;background:#EEF0FF;color:#14163A}
+.mail .hd{padding:.8rem 1rem;border-bottom:1px solid #CBD0F0;display:grid;gap:.15rem;font-size:.8125rem;line-height:1.6}
+.mail .hd span{color:#5A6090}
+.mail .hd b{font-weight:700;overflow-wrap:anywhere}
+.mail .bd{padding:1rem;display:grid;gap:.9rem;font-size:.9375rem;line-height:1.75}
+.mail table{width:100%;border-collapse:collapse;font-size:.875rem}
+.mail td{padding:.4rem 0;border-bottom:1px solid #D9DCF3;vertical-align:top}
+.mail td:first-child{font-size:.75rem;color:#5A6090;width:6.5em}
+.mail ul{margin:0;padding-left:1.2rem;display:grid;gap:.2rem}
+.mail .fine{font-size:.75rem;line-height:1.7;color:#5A6090}
+.sms{margin-top:1rem;display:grid;gap:.6rem;justify-items:start}
+.sms .who{font-size:.75rem;color:var(--muted)}
+.sms .bub{max-width:24em;border-radius:20px 20px 20px 6px;background:linear-gradient(135deg,rgba(108,59,245,.5),rgba(240,82,200,.28));border:1px solid var(--line);padding:.8rem 1rem;font-size:.9375rem;line-height:1.7;overflow-wrap:anywhere}
+.status{margin-top:1rem;font-size:.8125rem;line-height:1.7;border-left:3px solid var(--magenta);padding-left:.8rem;color:var(--muted)}
+.status.ok{border-color:var(--cyan)}
+.again{margin:0 1.4rem 1.4rem}
+.faq{margin-top:2.6rem;max-width:46em}
+.faq details{border-top:1px solid rgba(150,130,255,.2);padding:.2rem 0}
+.faq details:last-child{border-bottom:1px solid rgba(150,130,255,.2)}
+.faq summary{cursor:pointer;font-weight:700;padding:.8rem 0}
+.faq details p{padding:0 0 1rem;color:var(--muted)}
+
+footer{margin-top:clamp(3.5rem,8vw,5.5rem);border-top:1px solid rgba(150,130,255,.2);padding-top:1.2rem;display:grid;gap:.4rem;text-align:center;font-size:.75rem;line-height:1.8;color:var(--muted)}
+footer .lu{font:700 .8125rem var(--f-display);letter-spacing:.3em;color:var(--cyan)}
+
+/* effects */
+.top,main{position:relative;z-index:1}
+.progress{position:fixed;left:0;top:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--cyan),var(--violet),var(--magenta));box-shadow:0 0 12px rgba(139,92,255,.8);z-index:60;pointer-events:none}
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.aurora i{position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(90px);will-change:transform}
+.aurora i:nth-child(1){left:-18vmax;top:-10vmax;background:radial-gradient(circle,#6C3BF5,transparent 65%);opacity:.30}
+.aurora i:nth-child(2){right:-22vmax;top:30vh;background:radial-gradient(circle,#F052C8,transparent 65%);opacity:.18}
+.aurora i:nth-child(3){left:20vw;bottom:-30vmax;background:radial-gradient(circle,#35E3F5,transparent 65%);opacity:.14}
+#trail{position:fixed;left:0;top:0;z-index:9998;pointer-events:none}
+#stick{position:fixed;left:0;top:0;z-index:9999;pointer-events:none;width:70px;height:200px;margin:-36px 0 0 -35px;visibility:hidden;will-change:transform;transition:opacity .15s}
+#stick svg{display:block;transform-origin:35px 36px;transition:transform .16s ease-out}
+html.has-stick,html.has-stick *{cursor:none!important}
+html.has-stick input,html.has-stick textarea{cursor:text!important}
+.marq{overflow:hidden;margin-top:clamp(3rem,7vw,5rem);margin-left:calc(-1*max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1*max(16px,env(safe-area-inset-right,0px)));padding-block:.3rem;border-block:1px solid rgba(150,130,255,.18)}
+.marq-in{display:inline-block;white-space:nowrap;font:800 clamp(2.6rem,9vw,6rem)/1.15 var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--bg);-webkit-text-stroke:3px rgba(139,92,255,.95);paint-order:stroke fill;will-change:transform;animation:marq 52s linear infinite}
+@keyframes marq{to{transform:translate3d(-50%,0,0)}}
+.marq.b .marq-in{-webkit-text-stroke-color:rgba(53,227,245,.9)}
+.pill{border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--text);padding:.35rem .9rem;font:600 .75rem var(--f-display);letter-spacing:.06em;cursor:pointer;min-height:2rem}
+.pill:hover{border-color:var(--cyan);color:var(--cyan)}
+@keyframes flick{0%,17%,21%,58%,100%{opacity:1}19%,23%,56%{opacity:.35}}
+@media (prefers-reduced-motion:no-preference){
+  h1 .l2{animation:flick 1.8s 2.4s 1 both}
+}
+@media (prefers-reduced-motion:reduce){#trail,#loader{display:none}.marq-in{animation:none}}
+
+/* scroll-linked reveal (JS sets --rp / --hp from scroll position, so wheel and touch behave the same) */
+.rv{opacity:var(--rp,1);translate:0 calc((1 - var(--rp,1))*64px);scale:calc(.94 + .06*var(--rp,1));transition:opacity 1.1s ease-out,translate 1.2s cubic-bezier(.2,.7,.2,1),scale 1.2s cubic-bezier(.2,.7,.2,1),transform .14s ease-out,box-shadow .2s,border-color .2s,background .2s}
+.sp{--hp:1}
+.sp .w{display:inline-block;white-space:nowrap}
+.sp .ch{display:inline-block;--k:clamp(0,calc((var(--hp)*(var(--n) + 5) - var(--i))/5),1);opacity:var(--k);transform:translateY(calc((1 - var(--k))*.6em));filter:blur(calc((1 - var(--k))*7px))}
+.sp.shown .ch{opacity:1;transform:none;filter:none}
+
+/* loader */
+#loader{position:fixed;inset:0;z-index:10000;background:var(--bg);display:grid;place-items:center;transition:transform .95s cubic-bezier(.77,0,.18,1),opacity .4s .65s;animation:lfail 0s 9s forwards}
+#loader.out{transform:translateY(-100%);opacity:0;pointer-events:none}
+@keyframes lfail{to{visibility:hidden;pointer-events:none}}
+html.loading{overflow:hidden}
+.ld-in{width:min(560px,86vw);text-align:center}
+.ld-logo{font:800 clamp(1.5rem,6vw,2.5rem)/1.1 var(--f-display);letter-spacing:.14em;text-transform:uppercase;text-shadow:0 0 24px rgba(139,92,255,.7)}
+.ld-logo span{color:var(--cyan)}
+.ld-num{margin-top:1.3rem;font:500 clamp(3.6rem,17vw,7.5rem)/1 var(--f-mono);font-variant-numeric:tabular-nums;background:linear-gradient(90deg,var(--cyan),var(--violet),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ld-num small{font-size:.28em;margin-left:.15em}
+.ld-bar{margin-top:1rem;height:3px;background:rgba(150,130,255,.22);border-radius:3px;overflow:hidden}
+.ld-bar i{display:block;height:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--cyan),var(--violet),var(--magenta));box-shadow:0 0 14px var(--violet)}
+.ld-sub{margin-top:.9rem;font:600 .75rem var(--f-display);letter-spacing:.3em;color:var(--muted)}
+.ld-skip{margin-top:1.4rem}
+
+/* renovation scene */
+.renew{position:relative;height:330vh;margin-top:clamp(3rem,7vw,5rem)}
+.rn-stick{position:sticky;top:0;height:100vh;height:100svh;display:flex;flex-direction:column;justify-content:center;gap:.8rem;padding-block:.8rem;max-width:1160px;margin-inline:auto}
+.rn-head h2{font-size:clamp(1.5rem,3.6vw,2.4rem);margin-top:.2rem}
+.rn-frame{position:relative;aspect-ratio:2/1;width:min(100%,calc((100vh - 290px)*2));width:min(100%,calc((100svh - 290px)*2));margin-inline:auto;border-radius:24px;overflow:hidden;border:1px solid var(--line);background:#05061a;box-shadow:0 0 70px rgba(108,59,245,.3)}
+.rn-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rn-old{filter:grayscale(calc(.75*(1 - var(--q,0)))) sepia(calc(.5*(1 - var(--q,0)))) brightness(calc(.78 + .22*var(--q,0)))}
+.rn-new{clip-path:circle(var(--rr,0px) at 50% 62%)}
+.rn-ring{position:absolute;left:50%;top:62%;width:calc(var(--rr,0px)*2);height:calc(var(--rr,0px)*2);transform:translate(-50%,-50%);border-radius:50%;border:2px solid rgba(53,227,245,.9);box-shadow:0 0 28px rgba(53,227,245,.8),inset 0 0 40px rgba(139,92,255,.5);pointer-events:none;opacity:calc(1 - var(--q,0)*1.05)}
+.rn-caps{display:grid;min-height:3.2rem}
+.rn-cap{grid-area:1/1;font-size:.9375rem;line-height:1.6}
+.rn-cap b{display:block;font:700 .75rem var(--f-display);letter-spacing:.3em;color:var(--cyan);margin-bottom:.2rem}
+.rn-cap.old{opacity:clamp(0,calc(1 - var(--q,0)*2.4),1)}
+.rn-cap.new{opacity:clamp(0,calc((var(--q,0) - .55)*3),1)}
+.rn-meter{display:flex;align-items:center;gap:.8rem;font:600 .6875rem var(--f-display);letter-spacing:.24em;color:var(--muted)}
+.rn-meter i{flex:1;height:3px;border-radius:3px;background:rgba(150,130,255,.22);overflow:hidden}
+.rn-meter b{display:block;height:100%;transform-origin:0 50%;transform:scaleX(var(--q,0));background:linear-gradient(90deg,var(--cyan),var(--magenta))}
+.rn-zones{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
+.rn-zones li{border:1px solid rgba(150,130,255,.25);border-radius:999px;padding:.15rem .75rem;font:600 .75rem var(--f-display);color:rgba(169,176,227,.55);transition:color .5s,border-color .5s,box-shadow .5s,background .5s}
+.rn-zones li.on{color:var(--text);border-color:var(--cyan);background:rgba(53,227,245,.1);box-shadow:0 0 16px rgba(53,227,245,.35)}
+.rn-hint{font:600 .75rem var(--f-display);letter-spacing:.2em;color:var(--cyan);opacity:clamp(0,calc(1 - var(--q,0)*8),1)}
+.renew.static{height:auto}
+.renew.static .rn-stick{position:static;height:auto;padding-block:0}
+@media (max-width:860px){.rn-frame{width:min(100%,calc((100svh - 340px)*2))}}
+
+/* 3D goods ring */
+.ring{margin-top:1.8rem;user-select:none;-webkit-user-select:none}
+.ring-stage{position:relative;height:clamp(340px,50vw,520px);perspective:1200px;overflow:hidden;cursor:grab;touch-action:pan-y;border-radius:26px;border:1px solid rgba(150,130,255,.2);background:radial-gradient(60% 55% at 50% 64%,rgba(108,59,245,.3),transparent 72%),rgba(255,255,255,.02)}
+.ring-stage.drag{cursor:grabbing}
+.ring-floor{position:absolute;left:50%;bottom:11%;width:min(78%,760px);height:15%;transform:translateX(-50%);border-radius:50%;border:1px solid rgba(139,92,255,.4);box-shadow:0 0 44px rgba(108,59,245,.4),inset 0 0 44px rgba(108,59,245,.25);pointer-events:none}
+.ri{position:absolute;left:50%;top:44%;width:var(--iw,200px);height:calc(var(--iw,200px)*1.3);margin:0;padding:0;border:0;background:none;cursor:pointer;will-change:transform,opacity,filter}
+.ri img{width:100%;height:100%;object-fit:contain;pointer-events:none;-webkit-user-drag:none;border-radius:18px;border:1px solid var(--line);background:#0a0c2b;box-shadow:0 14px 36px rgba(108,59,245,.4)}
+.ri .rnm{position:absolute;left:50%;bottom:-1.7rem;transform:translateX(-50%);white-space:nowrap;font:700 .75rem var(--f-display);letter-spacing:.08em;color:var(--text);opacity:0;transition:opacity .3s}
+.ri.front .rnm{opacity:1}
+.ri:focus-visible{outline:3px solid var(--cyan);outline-offset:4px}
+.rb{position:absolute;top:50%;transform:translateY(-50%);z-index:300;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid var(--line);background:rgba(8,9,31,.75);color:var(--text);font:400 1.5rem/1 var(--f-body);cursor:pointer;display:grid;place-items:center;padding:0}
+.rb:hover{border-color:var(--cyan);color:var(--cyan)}
+.rb.prev{left:.6rem}.rb.next{right:.6rem}
+.ring-lbl{margin-top:.8rem;text-align:center;font:700 .9375rem var(--f-display);letter-spacing:.06em;min-height:1.6em}
+.ring-lbl em{font-style:normal;color:var(--magenta);margin-left:.6rem}
+.ring+.cap{text-align:center}
+.gdetail{margin-top:1.2rem;display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:1.4rem;padding:1.2rem;align-items:center;scroll-margin-top:1rem}
+.gdetail[hidden]{display:none}
+.gd-img{border-radius:18px;border:1px solid var(--line);background:#0a0c2b;aspect-ratio:1/1.1;display:grid;place-items:center;overflow:hidden}
+.gd-img img{width:100%;height:100%;object-fit:contain}
+.gd-body{min-width:0}
+.gd-body h3{font:800 1.7rem/1.25 var(--f-body);margin-top:.2rem}
+.gd-desc{margin-top:.5rem;color:var(--muted)}
+.gd-pr{margin-top:.8rem;display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
+.gd-pr b{font:800 1.8rem/1 var(--f-display);color:var(--magenta);font-variant-numeric:tabular-nums}
+.gd-pr .chip{margin-top:0;--c:var(--cyan)}
+.vars{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.vars button{display:inline-flex;align-items:center;gap:.45rem;border:1px solid var(--line);border-radius:999px;background:transparent;padding:.35rem .9rem;font:600 .8125rem var(--f-body);cursor:pointer;min-height:2.2rem}
+.vars button i{width:.8rem;height:.8rem;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c)}
+.vars button[aria-pressed="true"]{border-color:var(--c,var(--cyan));box-shadow:0 0 18px color-mix(in srgb,var(--c,#35E3F5) 50%,transparent);background:rgba(255,255,255,.06)}
+.gd-act{display:flex;align-items:center;flex-wrap:wrap;gap:.8rem;margin-top:1.2rem}
+
+/* cart */
+.cartbox{margin-top:2rem;padding:1.4rem;scroll-margin-top:1rem}
+.cartbox h3{font:800 1.35rem var(--f-display)}
+.cartbox h3 span{color:var(--cyan);font-weight:600}
+.cl{display:grid;grid-template-columns:3.4rem minmax(0,1fr) auto;gap:.2rem .9rem;align-items:center;padding:.8rem 0;border-top:1px solid rgba(150,130,255,.18)}
+.cl:first-child{margin-top:.6rem}
+.cl img{grid-row:1/3;width:3.4rem;height:3.4rem;object-fit:contain;border-radius:12px;background:#0a0c2b;border:1px solid var(--line)}
+.cl .nm{min-width:0}
+.cl .nm b{display:block;font-weight:700}
+.cl .nm small{color:var(--muted)}
+.cl .lp{font:700 1rem var(--f-display);color:var(--magenta);font-variant-numeric:tabular-nums;text-align:right}
+.cl .ctl{grid-column:2/-1;display:flex;align-items:center;gap:.8rem}
+.cl .qty button{width:2.2rem;height:2.2rem}
+.cl .x{margin-left:auto;background:none;border:0;color:var(--muted);cursor:pointer;font:600 .8125rem var(--f-body);padding:.4rem .2rem;text-decoration:underline}
+.cl .x:hover{color:var(--text)}
+.cart-empty{color:var(--muted);padding:1rem 0}
+.ct{margin:1rem 0 0;display:grid;gap:.2rem}
+.ct div{display:flex;justify-content:space-between;gap:1rem;padding:.35rem 0;color:var(--muted);font-size:.875rem}
+.ct dd{margin:0;font-weight:700;color:var(--text)}
+.ct .total{border-top:1px solid rgba(150,130,255,.2);margin-top:.3rem;padding-top:.7rem;color:var(--text);font-weight:700}
+.ct .total dd{font:800 1.7rem/1.1 var(--f-display);color:var(--cyan)}
+.co-row{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.2rem}
+.btn[disabled]{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+#navn{color:var(--magenta);font-family:var(--f-mono)}
+#cartfab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:70;display:inline-flex;gap:.6rem;align-items:center;border-radius:999px;padding:.8rem 1.2rem;font:700 .875rem var(--f-body);text-decoration:none;color:#fff;background:linear-gradient(90deg,var(--violet-d),#B04BFF);box-shadow:0 10px 30px rgba(108,59,245,.55)}
+#cartfab[hidden]{display:none}
+#cartfab b{font-family:var(--f-mono)}
+#toast{position:fixed;left:50%;bottom:max(80px,env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);z-index:80;max-width:min(92vw,420px);border-radius:14px;border:1px solid var(--cyan);background:rgba(8,9,31,.94);padding:.7rem 1.1rem;font-size:.875rem;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+.receipt{margin-top:1rem;border:1px dashed var(--line);border-radius:16px;padding:1rem}
+.receipt h4{font:700 .75rem var(--f-display);letter-spacing:.2em;color:var(--cyan)}
+.receipt ul{margin:.6rem 0 0;padding:0;list-style:none;display:grid;gap:.3rem;font-size:.9375rem}
+.receipt li{display:flex;justify-content:space-between;gap:1rem}
+.receipt p{margin-top:.6rem;font-size:.8125rem;color:var(--muted)}
+.eticket+.eticket{margin-top:1rem}
+@media (max-width:860px){.gdetail{grid-template-columns:minmax(0,1fr)}.gd-img{aspect-ratio:1/.8}}
+
+@media (max-width:860px){
+  .hero,.split,.buy,.done-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-art{justify-self:start}
+  .zones{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .zpanel{grid-template-columns:minmax(0,1fr)}
+  .zhead{border-right:0;border-bottom:1px solid var(--line)}
+  .spanel{grid-template-columns:minmax(0,1fr)}
+  .stub{border-right:0;border-bottom:1px dashed var(--line)}
+  .pair{grid-template-columns:minmax(0,1fr)}
+  .swipe{display:block}
+  .ev{grid-template-columns:minmax(0,1fr)}
+  .date{width:auto;display:flex;align-items:baseline;justify-content:center;gap:.7rem;padding:.5rem}
+  .date b{font-size:1.9rem}
+}
+
+:root{color-scheme:dark}body{margin:0}[hidden]{display:none!important}
+</style>
+</head><body>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<canvas id="trail" aria-hidden="true"></canvas>
+<div id="stick" aria-hidden="true"></div>
+<div id="loader" role="presentation">
+  <div class="ld-in">
+    <div class="ld-logo">Silent <span>Overture</span></div>
+    <div class="ld-num"><b>000</b><small>%</small></div>
+    <div class="ld-bar"><i></i></div>
+    <p class="ld-sub">未启之音 · LOADING</p>
+    <button type="button" class="pill ld-skip">SKIP</button>
+  </div>
+</div>
+<a id="cartfab" href="#cartbox" hidden>购物车 <b id="fabn">0</b> · <span id="fabt"></span></a>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<header class="wrap top">
+  <a class="mark" href="#top">Silent <span>Overture</span></a>
+  <nav aria-label="页面导航">
+    <a href="#members">成员 MEMBERS</a>
+    <a href="#events">演出 EVENTS</a>
+    <a href="#space">空间 SPACE</a>
+    <a href="#goods">周边 GOODS</a>
+    <a href="#tickets">购票 TICKETS</a>
+    <a href="#cartbox" id="navcart">购物车 <b id="navn">0</b></a>
+  </nav>
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-l="zh" aria-pressed="true">中文</button><button type="button" data-l="en" aria-pressed="false">EN</button><button type="button" data-l="ko" aria-pressed="false">한국어</button></div>
+</header>
+
+<main id="top">
+  <section class="wrap hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Fan concept site · Digital idol project</p>
+      <h1><span class="l1">Enter the</span><span class="l2">Overture.</span></h1>
+      <p class="lede">欢迎来到 Silent Overture 的霓虹宇宙。与 Thera、Hera、Dawn、Upi 一起,进入音乐、光影与未来交织的现场。第一场,设在一座建成后从未开业的商场里。</p>
+      <div class="cta-row">
+        <a class="btn" href="#events">探索演出 ↗</a>
+        <a class="btn ghost" href="#members">认识成员</a>
+      </div>
+      <div class="count" role="timer" aria-label="距离 12 月 16 日 Neon Live 开演的时间">
+        <div><b id="cd-d">--</b><span>DAYS</span></div>
+        <div><b id="cd-h">--</b><span>HRS</span></div>
+        <div><b id="cd-m">--</b><span>MIN</span></div>
+        <div><b id="cd-s">--</b><span>SEC</span></div>
+      </div>
+      <p class="cap">距 DEC 16 · Neon Live 开演(时间为示例)</p>
+    </div>
+    <figure class="hero-art">
+      <div class="frame">
+        <img src="assets/poster.jpg" width="900" height="1178" alt="SILENT OVERTURE 主视觉海报:四位成员站在霓虹舞台前">
+        <span class="tag">CONCEPT ART</span>
+      </div>
+      <span class="spark" style="right:-6px;top:-10px;color:var(--cyan)" aria-hidden="true">✦</span>
+      <span class="spark" style="left:-8px;bottom:34%;color:var(--magenta)" aria-hidden="true">✧</span>
+    </figure>
+  </section>
+
+  <div class="wrap logo">
+    <div class="big">Silent Overture</div>
+    <div class="tagl">LIGHT · SOUND · FUTURE</div>
+    <div class="zhn">未启之音</div>
+    <div class="div" aria-hidden="true"><i>✦</i><i>✧</i><i>⌁</i><i>✦</i></div>
+    <canvas id="band" role="img" aria-label="霓虹声波,会随指针移动变高"></canvas>
+  </div>
+
+  <div class="wrap">
+    <dl class="facts">
+      <div class="glass"><dt>NEON LIVE</dt><dd>12.16 周三<small>日期待最终确认</small></dd></div>
+      <div class="glass"><dt>OPEN</dt><dd>18:30 开放探索<small>19:00 开演 · 示例时间</small></dd></div>
+      <div class="glass"><dt>SHOW</dt><dd>正演 60 分钟<small>演后预留 15 分钟拍照离场</small></dd></div>
+      <div class="glass"><dt>PLACE</dt><dd>东方国贸新天地<small>上海闵行华漕 · 中庭主舞台</small></dd></div>
+    </dl>
+  </div>
+
+  <div class="marq" aria-hidden="true"><div class="marq-in" data-dir="-1" data-text="Light ✦ Sound ✦ Future ✦ "></div></div>
+
+  <section class="wrap sec" id="story">
+    <p class="eyebrow">Story · 演出故事</p>
+    <h2>《未启之音》</h2>
+    <div class="split">
+      <div>
+        <ol class="beats">
+          <li class="glass"><span class="n">1</span><div>
+            <h3>被遗忘的舞台</h3>
+            <p class="d">地下女团发现一座建成后从未开业的商场。她们利用空旷中庭与高层回廊,把沉寂的建筑改造成一次秘密公演的场地。</p>
+          </div></li>
+          <li class="glass"><span class="n">2</span><div>
+            <h3>唤醒沉睡的空间</h3>
+            <p class="d">观众从旧入口开始探索,寻找歌词与光点线索。店铺和地面装置逐步亮起,声音引导观众前往 04 区,等待团队登场。</p>
+          </div></li>
+          <li class="glass"><span class="n">3</span><div>
+            <h3>观众共同完成第一次开幕</h3>
+            <p class="d">四名成员在主舞台登场。观众在一层座位区观看,用荧光棒或 VR 控制器应援,灯光与投影随音乐和互动输入变化。终章后,旧招牌亮起「未启之音」。</p>
+          </div></li>
+        </ol>
+        <div class="pull"><b>团名:尚未奏响的序曲</b><span>未被奏响的序曲,承载着等待被听见的梦。</span></div>
+      </div>
+      <figure class="photo tall">
+        <img src="assets/concept-atrium.jpg" width="1600" height="900" loading="lazy" alt="阳光穿过玻璃穹顶,照进斑驳的多层商场中庭">
+        <figcaption class="cap">概念视觉 · 沉寂的中庭,不是现场照片</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="members">
+    <p class="eyebrow">Members · 团队介绍</p>
+    <h2>四种光芒,同一个舞台</h2>
+    <p class="sub">点一张卡片,把她的颜色设为你的应援色。它会出现在下面订票后的电子票上。</p>
+    <div class="cast" id="castgrid">
+      <button type="button" class="card glass" aria-pressed="false" style="--c:#FFD84D" data-name="THERA" data-c="#FFD84D">
+        <span class="ph"><img src="assets/thera.jpg" width="300" height="374" loading="lazy" alt="THERA:金色尖发,举起手臂"><span class="num">01</span></span>
+        <span class="body"><h3>Thera</h3><span class="role">STAGE ENERGY</span>
+        <span class="q">元气开朗,舞台活力担当。</span><span class="chip">SUNSHINE</span></span>
+      </button>
+      <button type="button" class="card glass" aria-pressed="false" style="--c:#9B6BFF" data-name="HERA" data-c="#9B6BFF">
+        <span class="ph"><img src="assets/hera.jpg" width="300" height="374" loading="lazy" alt="HERA:黑色马尾,戴白色耳机,紫色眼睛"><span class="num">02</span></span>
+        <span class="body"><h3>Hera</h3><span class="role">ARRANGER</span>
+        <span class="q">冷静内敛,编曲技术主力。</span><span class="chip">RHYTHM</span></span>
+      </button>
+      <button type="button" class="card glass" aria-pressed="true" style="--c:#FF5C93" data-name="DAWN" data-c="#FF5C93">
+        <span class="ph"><img src="assets/dawn.jpg" width="300" height="374" loading="lazy" alt="DAWN:白色到红色渐变的双马尾,蓝色眼睛"><span class="num">03</span></span>
+        <span class="body"><h3>Dawn</h3><span class="role">CENTER VOCAL</span>
+        <span class="q">热情耀眼,团队中心主唱。</span><span class="chip">HEART</span></span>
+      </button>
+      <button type="button" class="card glass" aria-pressed="false" style="--c:#35E0F0" data-name="UPI" data-c="#35E0F0">
+        <span class="ph"><img src="assets/upi.jpg" width="300" height="374" loading="lazy" alt="UPI:黑色短发,戴猫耳耳机"><span class="num">04</span></span>
+        <span class="body"><h3>Upi</h3><span class="role">STAGE CONTROL</span>
+        <span class="q">沉稳寡言,协助舞台控场。</span><span class="chip">STYLE</span></span>
+      </button>
+    </div>
+    <p class="cheer"><i aria-hidden="true"></i><span id="cheerlbl">应援色 · DAWN</span><button type="button" class="pill" id="stickoff" hidden>恢复普通指针和拖尾</button></p>
+    <p class="cap" id="fxhint" aria-live="polite">点一张成员卡片,指针会变成她的应援棒,拖尾换成她的颜色。右键(或按 Esc)可以全部恢复。</p>
+  </section>
+
+  <section class="wrap sec" id="events">
+    <p class="eyebrow">Live events · 演出</p>
+    <h2>即将发生的现场</h2>
+    <div class="events">
+      <article class="ev glass">
+        <div class="date"><small>DEC</small><b>16</b></div>
+        <div>
+          <h3>Silent Overture · Neon Live</h3>
+          <p class="meta">MAIN STAGE · 04 区中庭主舞台</p>
+          <p class="d">四位成员在中庭主舞台登场,观众在一层座位区用荧光棒或 VR 控制器应援。入场信息待公布,页面里的时间为示例。</p>
+          <a class="btn" href="#tickets">选择票档 ↗</a>
+        </div>
+      </article>
+      <article class="ev glass">
+        <div class="date"><small>DEC</small><b>16</b></div>
+        <div>
+          <h3>Memory Street Pop-up</h3>
+          <p class="meta">LIMITED POP-UP · 02 区记忆街区</p>
+          <p class="d">限时快闪。周边摊位、饮品小食和休息桌,不含公演座位。示例开放时间 12:00–18:00。</p>
+          <a class="btn ghost" href="#tickets">快闪登记 ↗</a>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="sub2">Neon Live · 60 分钟,六个段落</h3>
+    <p class="sub" style="margin-top:.3rem">按时长画成一条横轴,条越宽,段落越长。点任意一段,看画面、观众互动和幕后控制。</p>
+    <div class="rail">
+      <div class="railin">
+        <div class="bar" id="bar" role="group" aria-label="演出时间轴"></div>
+        <div class="ticks" aria-hidden="true" id="ticks"></div>
+      </div>
+    </div>
+    <p class="swipe">横条可以左右滑动</p>
+    <div class="spanel glass" id="spanel" aria-live="polite"></div>
+  </section>
+
+  <section class="wrap sec" id="space">
+    <p class="eyebrow">Space · 原建筑与五区</p>
+    <h2>闵行华漕东方国贸新天地</h2>
+    <div class="split">
+      <div class="prose">
+        <p>这座建筑原规划为大型商业综合体:一至四层安排购物、餐饮与娱乐,五层以上配套酒店。原稿资料记录土建完成于 2014 年,之后没有开业。</p>
+        <p>提案保留建筑体量和外立面,只在入口附加主题标识、单张灯箱和五区导览。外围用声波与歌词图形,成员的形象集中在 04 区。</p>
+      </div>
+      <dl class="archive glass">
+        <div><dt>原规划</dt><dd>大型商业综合体</dd></div>
+        <div><dt>1–4 层</dt><dd>购物 · 餐饮 · 娱乐</dd></div>
+        <div><dt>5 层以上</dt><dd>酒店</dd></div>
+        <div><dt>土建完成</dt><dd>2014(原稿资料)</dd></div>
+        <div><dt>状态</dt><dd>建成后从未开业</dd></div>
+        <div><dt>本页活动</dt><dd>课程概念提案</dd></div>
+      </dl>
+    </div>
+    <div class="pair">
+      <figure class="photo"><img src="assets/exterior.jpg" width="1125" height="615" loading="lazy" alt="沿河的白色欧式风格大型建筑外观"><figcaption class="cap">原建筑外观</figcaption></figure>
+      <figure class="photo"><img src="assets/atrium-real.jpg" width="593" height="693" loading="lazy" alt="从高处俯拍的空旷中庭,钢结构玻璃顶下停着几辆车"><figcaption class="cap">原中庭</figcaption></figure>
+    </div>
+
+    <h3 class="sub2" id="zones">五区:一层观演,上层拍照</h3>
+    <p class="sub" style="margin-top:.3rem">01–04 区在一层,05 区是高层回廊。开演前 5 分钟回到 04 区就座,05 区建议安排在演前或演后。</p>
+    <div class="seg" role="group" aria-label="切换示意图视角">
+      <button type="button" id="v-front" aria-pressed="true">正视图</button>
+      <button type="button" id="v-bird" aria-pressed="false">俯瞰图</button>
+    </div>
+    <div class="mapbox"><img id="mapimg" src="assets/map-front.jpg" width="1600" height="800" loading="lazy" alt="五区分布的概念示意图"></div>
+    <p class="cap">功能关系示意,不是实测图</p>
+    <ul class="zones" id="zonebtns"></ul>
+    <div class="zpanel glass" id="zpanel" aria-live="polite"></div>
+  </section>
+
+  <section class="renew" id="renew" aria-label="旧中庭翻新对比">
+    <div class="rn-stick">
+      <div class="rn-head"><p class="eyebrow">Renovation · 旧内景翻新</p><h2>旧的中庭,慢慢亮起来</h2></div>
+      <div class="rn-frame">
+        <img class="rn-old" src="assets/concept-atrium.jpg" width="1600" height="900" alt="废弃商场中庭概念图:积灰的环形回廊和天窗,地面空旷">
+        <img class="rn-new" src="assets/map-front.jpg" width="1600" height="800" alt="翻新后的中庭概念图:霓虹灯光、主舞台和观众席,标注五个区域">
+        <div class="rn-ring" aria-hidden="true"></div>
+      </div>
+      <div class="rn-caps"><p class="rn-cap old"><b>BEFORE</b>建成后从未开业的中庭:积灰、空旷,只剩天窗的光。</p><p class="rn-cap new"><b>AFTER</b>提案里的 04 区:同一个中庭,被声波和灯光重新点亮。</p></div>
+      <div class="rn-meter" aria-hidden="true"><span>BEFORE</span><i><b></b></i><span>AFTER</span></div>
+      <ol class="rn-zones" aria-label="五个区域">
+        <li>01 入口 · 唤醒</li><li>02 记忆街区</li><li>03 儿童 · 轻互动</li><li>04 中庭主舞台</li><li>05 高层回廊</li>
+      </ol>
+      <p class="rn-hint" aria-hidden="true">向下滚动或滑动,让它翻新 ↓</p>
+    </div>
+  </section>
+
+  <div class="marq b" aria-hidden="true"><div class="marq-in" data-dir="1" data-text="Silent Overture ✧ 未启之音 ✧ "></div></div>
+
+  <section class="wrap sec" id="goods">
+    <p class="eyebrow">Official goods · 官方周边</p>
+    <h2>把光带回家</h2>
+    <p class="sub">周边摊位在 02 区记忆街区。灯棒、随机卡、立牌是官网列出的周边,钥匙扣、手环、挂绳来自概念设计稿。价格均为示例,可以先放进购物车。</p>
+    <div class="ring" id="ring" role="group" aria-roledescription="carousel" aria-label="周边展示,可左右拖动旋转">
+      <div class="ring-stage" id="ringstage">
+        <div class="ring-floor" aria-hidden="true"></div>
+        <button type="button" class="rb prev" id="rprev" aria-label="上一件">‹</button>
+        <button type="button" class="rb next" id="rnext" aria-label="下一件">›</button>
+      </div>
+      <p class="ring-lbl" id="ringlbl" aria-live="polite"></p>
+    </div>
+    <p class="cap" id="ringhint">会自己缓慢转圈。拖动或滑动可以转,点一件放大并选购。</p>
+    <div class="gdetail glass" id="gdetail" hidden>
+      <div class="gd-img"><img id="gd-img" alt="" width="400" height="440"></div>
+      <div class="gd-body">
+        <p class="eyebrow" id="gd-en"></p>
+        <h3 id="gd-name"></h3>
+        <p class="gd-desc" id="gd-desc"></p>
+        <p class="gd-pr"><b id="gd-price"></b><span class="chip" id="gd-tag"></span></p>
+        <div class="vars" id="gd-vars" role="group" aria-label="款式"></div>
+        <div class="gd-act">
+          <div class="qty"><button type="button" id="gq-minus" aria-label="减少一件">−</button><output id="gq" aria-live="polite">1</output><button type="button" id="gq-plus" aria-label="增加一件">+</button></div>
+          <button type="button" class="btn" id="gd-add">加入购物车</button>
+          <button type="button" class="btn ghost" id="gd-close">收起</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap cta">
+    <h2>准备好进入 Silent Overture 了吗?</h2>
+    <a class="btn" href="#tickets">查看活动与购票信息 ↗</a>
+  </section>
+
+  <section class="wrap sec" id="tickets">
+    <p class="eyebrow">Tickets</p>
+    <h2>选一个参与方式</h2>
+    <p class="sub">票和周边都先放进购物车。可以一起结算,也可以只结算其中一类。</p>
+    <form id="orderform" novalidate>
+      <div class="buy">
+        <fieldset id="tiers">
+          <legend class="eyebrow">票档(示例票价)</legend>
+          <label class="tier"><input type="radio" name="tier" value="std" checked><b>Neon Live · 现场座席</b><span class="pr">₩35,000</span><small>12.16 · 04 区中庭主舞台的座位。含荧光棒领取和五区导览。</small></label>
+          <label class="tier"><input type="radio" name="tier" value="vr"><b>Neon Live · 座席 + VR 体验</b><span class="pr">₩48,000</span><small>12.16 · 在座席票基础上增加一次头显体验:戴上设备,从第一视角进入五区。</small></label>
+          <label class="tier"><input type="radio" name="tier" value="pop"><b>Memory Street Pop-up · 入场登记</b><span class="pr">免费</span><small>12.16 · 02 区记忆街区限时快闪。不含公演座位。</small></label>
+        </fieldset>
+        <div class="sum glass">
+          <dl>
+            <div><dt>票档</dt><dd id="s-name">现场座席</dd></div>
+            <div><dt>数量</dt><dd id="s-qty">1 张</dd></div>
+            <div><dt>场次</dt><dd id="s-when">2026.12.16 19:00</dd></div>
+            <div class="total"><dt>小计</dt><dd id="s-total">₩35,000</dd></div>
+          </dl>
+          <div class="qrow">
+            <span class="eyebrow m">张数(最多 4 张)</span>
+            <div class="qty">
+              <button type="button" id="q-minus" aria-label="减少一张">−</button>
+              <output id="qty" aria-live="polite">1</output>
+              <button type="button" id="q-plus" aria-label="增加一张">+</button>
+            </div>
+          </div>
+          <button type="button" class="btn" id="addticket">加入购物车</button>
+          <p class="demo">演示页面。没有真实售票、扣款或活动。</p>
+        </div>
+      </div>
+
+      <div class="cartbox glass" id="cartbox" aria-labelledby="cart-h">
+        <h3 id="cart-h">购物车 <span id="cart-n">(0)</span></h3>
+        <div id="cartlines"></div>
+        <dl class="ct">
+          <div><dt>票务小计</dt><dd id="ct-t">免费</dd></div>
+          <div><dt>周边小计</dt><dd id="ct-g">免费</dd></div>
+          <div class="total"><dt>合计</dt><dd id="ct-a">免费</dd></div>
+        </dl>
+        <div class="fields">
+          <div class="field"><label for="f-name">观演人 / 收件人姓名</label><input id="f-name" name="name" autocomplete="name" required maxlength="30" placeholder="例如:林夏"></div>
+          <div class="field"><label for="f-mail">接收确认信息的邮箱</label><input id="f-mail" name="email" type="email" autocomplete="email" required maxlength="80" placeholder="name@example.com"></div>
+          <div class="field"><label for="f-tel">手机号(选填,用于短信预览)</label><input id="f-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" pattern="[0-9+\-\s]{6,20}" placeholder="选填"><small id="privacy">邮箱和手机号只用来生成下面的预览,页面不会保存,也不会发给任何人。</small></div>
+        </div>
+        <div class="co-row">
+          <button type="button" class="btn" id="co-all" disabled>全部一起结算</button>
+          <button type="button" class="btn ghost" id="co-t" disabled>只结算票务</button>
+          <button type="button" class="btn ghost" id="co-g" disabled>只结算周边</button>
+        </div>
+        <p class="demo">演示结算,不会扣款。没结算的内容会留在购物车里。</p>
+      </div>
+    </form>
+
+    <div class="done" id="done" hidden>
+      <div class="done-head">
+        <h3 id="done-h" tabindex="-1">购买成功</h3>
+        <p id="done-sub"></p>
+      </div>
+      <div class="done-grid">
+        <div class="stub">
+          <div id="etickets"></div>
+          <div id="receipt"></div>
+          <p class="ex">示例电子票和取货单,条码不可扫描。</p>
+        </div>
+        <div class="msgs">
+          <div class="tabs" role="tablist" aria-label="确认信息预览">
+            <button type="button" role="tab" id="tab-mail" aria-selected="true" aria-controls="pane-mail">邮件</button>
+            <button type="button" role="tab" id="tab-sms" aria-selected="false" aria-controls="pane-sms">短信</button>
+          </div>
+          <div id="pane-mail" role="tabpanel" aria-labelledby="tab-mail"></div>
+          <div id="pane-sms" role="tabpanel" aria-labelledby="tab-sms" hidden></div>
+          <p class="status" id="status"></p>
+        </div>
+      </div>
+      <button type="button" class="btn ghost again" id="again">继续选购</button>
+    </div>
+
+    <div class="faq">
+      <details>
+        <summary>没有头显可以参与吗?</summary>
+        <p>可以。现场座席票在 04 区观看公演。没有头显时,VR 互动用键盘和鼠标演示同样的事件。远程多人观演是后续扩展,目前不提供。</p>
+      </details>
+      <details>
+        <summary>什么时候到场?</summary>
+        <p>提前 30 分钟开放探索,按 01 到 03 区的顺序走。开演前 5 分钟回到 04 区就座。</p>
+      </details>
+      <details>
+        <summary>05 区什么时候去?</summary>
+        <p>建议演前或演后。演后预留 15 分钟,去高层回廊拍照,再按出口导览离场。屋顶是否开放,以场地可用性确认为准。</p>
+      </details>
+    </div>
+  </section>
+
+  <footer class="wrap">
+    <span>© 2026 SILENT OVERTURE · 未启之音 · fan concept website</span>
+    <span>专题设计 2 课程提案。图像为 AI 生成的概念视觉,不是现场照片。</span>
+    <span class="lu">LIGHT UP YOUR OWN UNIVERSE ✦</span>
+  </footer>
+</main>
+
+<script>
+(function(){
+  'use strict';
+  var $=function(s,r){return (r||document).querySelector(s)};
+  var $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+  function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+  var root=document.documentElement;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* ===== i18n: zh is the source text; en / ko come from this table ===== */
+  var LANG='zh',D={};
+  [
+   ['未启之音','Silent Overture','사일런트 오버추어'],
+   ['未启之音 · LOADING','Silent Overture · LOADING','사일런트 오버추어 · LOADING'],
+   ['购物车','Cart','장바구니'],
+   ['成员 MEMBERS','MEMBERS','멤버 MEMBERS'],
+   ['演出 EVENTS','EVENTS','공연 EVENTS'],
+   ['空间 SPACE','SPACE','공간 SPACE'],
+   ['周边 GOODS','GOODS','굿즈 GOODS'],
+   ['购票 TICKETS','TICKETS','예매 TICKETS'],
+   ['欢迎来到 Silent Overture 的霓虹宇宙。与 Thera、Hera、Dawn、Upi 一起,进入音乐、光影与未来交织的现场。第一场,设在一座建成后从未开业的商场里。','Welcome to the neon universe of Silent Overture. Join Thera, Hera, Dawn and Upi in a show where music, light and the future meet. The first show is set inside a mall that was built but never opened.','사일런트 오버추어의 네온 우주에 오신 것을 환영합니다. 테라, 헤라, 던, 우피와 함께 음악과 빛, 미래가 어우러지는 현장으로 들어가 보세요. 첫 공연은 완공 후 한 번도 문을 열지 않은 쇼핑몰에서 열립니다.'],
+   ['探索演出 ↗','Explore the show ↗','공연 보기 ↗'],
+   ['认识成员','Meet the members','멤버 소개'],
+   ['距 DEC 16 · Neon Live 开演(时间为示例)','Until DEC 16 · Neon Live starts (sample time)','DEC 16 · Neon Live 공연까지 (예시 시간)'],
+   ['12.16 周三','12.16 Wed','12.16 수요일'],
+   ['日期待最终确认','Date to be confirmed','날짜는 최종 확정 예정'],
+   ['18:30 开放探索','18:30 Exploration opens','18:30 탐험 입장'],
+   ['19:00 开演 · 示例时间','19:00 Show starts · sample time','19:00 공연 시작 · 예시 시간'],
+   ['正演 60 分钟','60-minute show','본 공연 60분'],
+   ['演后预留 15 分钟拍照离场','15 minutes after the show for photos and exit','공연 후 15분 촬영 및 퇴장'],
+   ['东方国贸新天地','Dongfang Guomao New World','동방국무 신천지'],
+   ['上海闵行华漕 · 中庭主舞台','Huacao, Minhang, Shanghai · Atrium main stage','상하이 민항 화차오 · 중정 메인 무대'],
+   ['Story · 演出故事','Story','스토리'],
+   ['《未启之音》','“Silent Overture”','《사일런트 오버추어》'],
+   ['被遗忘的舞台','The forgotten stage','잊혀진 무대'],
+   ['地下女团发现一座建成后从未开业的商场。她们利用空旷中庭与高层回廊,把沉寂的建筑改造成一次秘密公演的场地。','An underground girl group finds a mall that was built but never opened. Using its empty atrium and upper galleries, they turn the silent building into the venue of a secret concert.','언더그라운드 걸그룹이 완공 후 한 번도 문을 열지 않은 쇼핑몰을 발견합니다. 텅 빈 중정과 상층 회랑을 활용해 고요한 건물을 비밀 공연장으로 바꿉니다.'],
+   ['唤醒沉睡的空间','Waking the sleeping space','잠든 공간 깨우기'],
+   ['观众从旧入口开始探索,寻找歌词与光点线索。店铺和地面装置逐步亮起,声音引导观众前往 04 区,等待团队登场。','The audience starts at the old entrance and looks for lyrics and points of light. Shops and floor installations light up one by one, and sound guides everyone to Zone 04 to wait for the group.','관객은 옛 입구에서 출발해 가사와 빛의 단서를 찾습니다. 상점과 바닥 장치가 차례로 켜지고, 소리가 관객을 04구역으로 안내해 팀의 등장을 기다리게 합니다.'],
+   ['观众共同完成第一次开幕','The first opening, finished together','관객이 함께 완성하는 첫 개막'],
+   ['四名成员在主舞台登场。观众在一层座位区观看,用荧光棒或 VR 控制器应援,灯光与投影随音乐和互动输入变化。终章后,旧招牌亮起「未启之音」。','The four members appear on the main stage. The audience watches from the ground-floor seats and cheers with light sticks or VR controllers, while lights and projections react to the music and their input. After the finale, the old sign lights up with “Silent Overture”.','네 멤버가 메인 무대에 등장합니다. 관객은 1층 객석에서 응원봉이나 VR 컨트롤러로 응원하고, 조명과 영상은 음악과 관객의 입력에 따라 바뀝니다. 피날레 후 낡은 간판에 「사일런트 오버추어」가 켜집니다.'],
+   ['团名:尚未奏响的序曲','The name: an overture not yet played','팀 이름: 아직 연주되지 않은 서곡'],
+   ['未被奏响的序曲,承载着等待被听见的梦。','An overture that has not yet been played, holding a dream that is waiting to be heard.','아직 연주되지 않은 서곡. 들리기를 기다리는 꿈을 담는다.'],
+   ['概念视觉 · 沉寂的中庭,不是现场照片','Concept art · the silent atrium, not a photo of the site','컨셉 비주얼 · 고요한 중정, 현장 사진이 아님'],
+   ['Members · 团队介绍','Members','Members · 멤버 소개'],
+   ['四种光芒,同一个舞台','Four lights, one stage','네 가지 빛, 하나의 무대'],
+   ['点一张卡片,把她的颜色设为你的应援色。它会出现在下面订票后的电子票上。','Tap a card to make her colour your cheer colour. It will appear on your e-ticket after you book below.','카드를 눌러 그녀의 색을 나의 응원 색으로 정하세요. 아래에서 예매한 뒤 전자 티켓에 표시됩니다.'],
+   ['元气开朗,舞台活力担当。','Bright and cheerful, the stage energy of the group.','활기찬 성격, 무대 에너지 담당'],
+   ['冷静内敛,编曲技术主力。','Calm and reserved, the main force behind arrangement.','차분한 성격, 편곡 담당'],
+   ['热情耀眼,团队中心主唱。','Passionate and dazzling, the centre vocal.','열정적인 팀의 메인 보컬'],
+   ['沉稳寡言,协助舞台控场。','Steady and quiet, helps run the stage.','차분한 성격, 무대 운영 보조'],
+   ['应援色','Cheer colour','응원 색'],
+   ['恢复普通指针和拖尾','Restore normal cursor and trail','기본 커서와 트레일로 되돌리기'],
+   ['点一张成员卡片,指针会变成她的应援棒,拖尾换成她的颜色。右键(或按 Esc)可以全部恢复。','Click a member card and the cursor turns into her light stick, with the trail in her colour. Right-click (or press Esc) to restore everything.','멤버 카드를 누르면 커서가 그녀의 응원봉으로 바뀌고 트레일도 그녀의 색이 됩니다. 오른쪽 클릭(또는 Esc)으로 모두 되돌릴 수 있습니다.'],
+   ['Live events · 演出','Live events','Live events · 공연'],
+   ['即将发生的现场','Coming up','곧 열리는 공연'],
+   ['MAIN STAGE · 04 区中庭主舞台','MAIN STAGE · Zone 04 atrium stage','MAIN STAGE · 04구역 중정 메인 무대'],
+   ['四位成员在中庭主舞台登场,观众在一层座位区用荧光棒或 VR 控制器应援。入场信息待公布,页面里的时间为示例。','The four members take the atrium main stage while the audience cheers from the ground-floor seats with light sticks or VR controllers. Entry details are yet to be announced; times on this page are samples.','네 멤버가 중정 메인 무대에 등장하고 관객은 1층 객석에서 응원봉이나 VR 컨트롤러로 응원합니다. 입장 정보는 추후 공개되며, 페이지의 시간은 예시입니다.'],
+   ['选择票档 ↗','Choose a ticket ↗','티켓 선택 ↗'],
+   ['LIMITED POP-UP · 02 区记忆街区','LIMITED POP-UP · Zone 02 Memory Street','LIMITED POP-UP · 02구역 기억 거리'],
+   ['限时快闪。周边摊位、饮品小食和休息桌,不含公演座位。示例开放时间 12:00–18:00。','A limited-time pop-up with goods stalls, drinks, snacks and rest tables. No concert seat included. Sample opening hours 12:00–18:00.','기간 한정 팝업. 굿즈 부스, 음료와 간식, 휴식 테이블이 있으며 공연 좌석은 포함되지 않습니다. 예시 운영 시간 12:00–18:00.'],
+   ['快闪登记 ↗','Pop-up sign-up ↗','팝업 등록 ↗'],
+   ['Neon Live · 60 分钟,六个段落','Neon Live · 60 minutes, six parts','Neon Live · 60분, 여섯 개의 파트'],
+   ['按时长画成一条横轴,条越宽,段落越长。点任意一段,看画面、观众互动和幕后控制。','Drawn as a timeline: the wider the bar, the longer the part. Tap any part to see the visuals, audience interaction and backstage control.','시간 길이대로 그린 가로 타임라인입니다. 막대가 넓을수록 파트가 깁니다. 파트를 눌러 화면, 관객 참여, 무대 뒤 제어를 확인하세요.'],
+   ['横条可以左右滑动','The bar can be swiped sideways','막대를 좌우로 밀 수 있습니다'],
+   ['演出时间轴','Show timeline','공연 타임라인'],
+   ['Space · 原建筑与五区','Space · the building and five zones','Space · 원래 건물과 다섯 구역'],
+   ['闵行华漕东方国贸新天地','Dongfang Guomao New World, Huacao, Minhang','민항 화차오 동방국무 신천지'],
+   ['这座建筑原规划为大型商业综合体:一至四层安排购物、餐饮与娱乐,五层以上配套酒店。原稿资料记录土建完成于 2014 年,之后没有开业。','The building was planned as a large commercial complex: shopping, dining and entertainment on floors one to four, with a hotel above. Source material records the structure as finished in 2014; it never opened.','이 건물은 대형 복합 상업시설로 계획되었습니다. 1~4층은 쇼핑·식음·엔터테인먼트, 5층 이상은 호텔입니다. 자료에 따르면 2014년에 골조가 완공되었고 이후 개장하지 않았습니다.'],
+   ['提案保留建筑体量和外立面,只在入口附加主题标识、单张灯箱和五区导览。外围用声波与歌词图形,成员的形象集中在 04 区。','The proposal keeps the building mass and facade, only adding themed signs, a single light box and a five-zone guide at the entrance. The outside uses sound waves and lyric graphics; the members’ images are concentrated in Zone 04.','이 제안은 건물의 규모와 외관을 그대로 두고, 입구에 테마 사인, 라이트박스 한 점, 다섯 구역 안내만 더합니다. 외부는 음파와 가사 그래픽을 쓰고, 멤버의 이미지는 04구역에 모읍니다.'],
+   ['原规划','Original plan','원래 계획'],
+   ['大型商业综合体','Large commercial complex','대형 복합 상업시설'],
+   ['1–4 层','Floors 1–4','1–4층'],
+   ['购物 · 餐饮 · 娱乐','Shopping · dining · entertainment','쇼핑 · 식음 · 엔터테인먼트'],
+   ['5 层以上','Floor 5 and up','5층 이상'],
+   ['酒店','Hotel','호텔'],
+   ['土建完成','Structure finished','골조 완공'],
+   ['2014(原稿资料)','2014 (source material)','2014 (원자료)'],
+   ['状态','Status','상태'],
+   ['建成后从未开业','Built but never opened','완공 후 개장하지 않음'],
+   ['本页活动','This page’s event','이 페이지의 행사'],
+   ['课程概念提案','Course concept proposal','수업 컨셉 제안'],
+   ['原建筑外观','The building today','현재 건물 외관'],
+   ['原中庭','The original atrium','원래의 중정'],
+   ['五区:一层观演,上层拍照','Five zones: show on the ground floor, photos upstairs','다섯 구역: 1층에서 공연, 위층에서 촬영'],
+   ['01–04 区在一层,05 区是高层回廊。开演前 5 分钟回到 04 区就座,05 区建议安排在演前或演后。','Zones 01–04 are on the ground floor; Zone 05 is the upper gallery. Be seated in Zone 04 five minutes before the show; visit Zone 05 before or after.','01–04구역은 1층, 05구역은 상층 회랑입니다. 공연 5분 전까지 04구역 좌석으로 돌아오고, 05구역은 공연 전이나 후에 방문하세요.'],
+   ['正视图','Front view','정면도'],
+   ['俯瞰图','Bird’s-eye view','조감도'],
+   ['功能关系示意,不是实测图','Diagram of how zones relate, not a measured plan','기능 관계 개념도, 실측 도면 아님'],
+   ['Renovation · 旧内景翻新','Renovation','Renovation · 옛 내부 리노베이션'],
+   ['旧的中庭,慢慢亮起来','The old atrium, slowly lighting up','낡은 중정이 천천히 밝아집니다'],
+   ['建成后从未开业的中庭:积灰、空旷,只剩天窗的光。','The atrium that never opened: dusty, empty, lit only by the skylight.','한 번도 문을 열지 않은 중정: 먼지가 쌓이고 텅 비어, 천창의 빛만 남았습니다.'],
+   ['提案里的 04 区:同一个中庭,被声波和灯光重新点亮。','Zone 04 in the proposal: the same atrium, lit again by sound waves and light.','제안 속 04구역: 같은 중정이 음파와 조명으로 다시 밝혀집니다.'],
+   ['01 入口 · 唤醒','01 Entrance · Wake-up','01 입구 · 웨이크업'],
+   ['02 记忆街区','02 Memory Street','02 기억 거리'],
+   ['03 儿童 · 轻互动','03 Kids · Light play','03 어린이 · 라이트 인터랙션'],
+   ['04 中庭主舞台','04 Atrium main stage','04 중정 메인 무대'],
+   ['05 高层回廊','05 Upper gallery','05 상층 회랑'],
+   ['向下滚动或滑动,让它翻新 ↓','Scroll or swipe down to renovate it ↓','아래로 스크롤하거나 밀어서 리노베이션하기 ↓'],
+   ['旧中庭翻新对比','Old atrium renovation comparison','옛 중정 리노베이션 비교'],
+   ['五个区域','Five zones','다섯 구역'],
+   ['Official goods · 官方周边','Official goods','Official goods · 공식 굿즈'],
+   ['把光带回家','Take the light home','빛을 집으로'],
+   ['周边摊位在 02 区记忆街区。灯棒、随机卡、立牌是官网列出的周边,钥匙扣、手环、挂绳来自概念设计稿。价格均为示例,可以先放进购物车。','Goods stalls are in Zone 02 Memory Street. The light stick, random card and stand are listed on the official site; the keychain, band and lanyard come from concept designs. All prices are samples; add them to the cart first.','굿즈 부스는 02구역 기억 거리에 있습니다. 응원봉, 랜덤 카드, 스탠드는 공식 사이트에 올라온 굿즈이고, 키링·팔찌·랜야드는 컨셉 디자인입니다. 가격은 모두 예시이며 먼저 장바구니에 담을 수 있습니다.'],
+   ['周边展示,可左右拖动旋转','Goods display, drag sideways to rotate','굿즈 전시, 좌우로 드래그해 회전'],
+   ['会自己缓慢转圈。拖动或滑动可以转,点一件放大并选购。','It turns slowly by itself. Drag or swipe to spin it; tap an item to enlarge and choose it.','저절로 천천히 돕니다. 드래그하거나 밀어서 돌리고, 하나를 눌러 확대해 고르세요.'],
+   ['上一件','Previous','이전'],['下一件','Next','다음'],['款式','Style','스타일'],
+   ['减少一件','One fewer','하나 줄이기'],['增加一件','One more','하나 늘리기'],
+   ['加入购物车','Add to cart','장바구니에 담기'],
+   ['收起','Close','닫기'],
+   ['准备好进入 Silent Overture 了吗?','Ready to enter Silent Overture?','사일런트 오버추어에 들어갈 준비가 되셨나요?'],
+   ['查看活动与购票信息 ↗','See the events and tickets ↗','공연과 예매 정보 보기 ↗'],
+   ['选一个参与方式','Choose how to take part','참여 방법을 고르세요'],
+   ['票和周边都先放进购物车。可以一起结算,也可以只结算其中一类。','Put tickets and goods in the cart first. Check out together, or only one kind.','티켓과 굿즈를 먼저 장바구니에 담으세요. 함께 결제하거나 한 종류만 결제할 수 있습니다.'],
+   ['票档(示例票价)','Ticket type (sample prices)','티켓 종류 (예시 가격)'],
+   ['Neon Live · 现场座席','Neon Live · Seat','Neon Live · 현장 좌석'],
+   ['12.16 · 04 区中庭主舞台的座位。含荧光棒领取和五区导览。','12.16 · A seat at the Zone 04 atrium stage. Includes a light stick and a five-zone guide.','12.16 · 04구역 중정 메인 무대의 좌석. 응원봉 수령과 다섯 구역 안내 포함.'],
+   ['Neon Live · 座席 + VR 体验','Neon Live · Seat + VR experience','Neon Live · 좌석 + VR 체험'],
+   ['12.16 · 在座席票基础上增加一次头显体验:戴上设备,从第一视角进入五区。','12.16 · Adds a headset session to the seat ticket: put on the device and enter the five zones in first person.','12.16 · 좌석 티켓에 헤드셋 체험이 추가됩니다. 기기를 쓰고 1인칭 시점으로 다섯 구역에 들어갑니다.'],
+   ['Memory Street Pop-up · 入场登记','Memory Street Pop-up · Entry sign-up','Memory Street Pop-up · 입장 등록'],
+   ['12.16 · 02 区记忆街区限时快闪。不含公演座位。','12.16 · Limited pop-up in Zone 02 Memory Street. No concert seat included.','12.16 · 02구역 기억 거리 기간 한정 팝업. 공연 좌석은 포함되지 않습니다.'],
+   ['免费','Free','무료'],
+   ['票档','Ticket','티켓'],['现场座席','Seat','현장 좌석'],['数量','Quantity','수량'],['1 张','1 ticket','1장'],['场次','Show','일정'],['小计','Subtotal','소계'],
+   ['张数(最多 4 张)','Tickets (up to 4)','매수 (최대 4장)'],
+   ['减少一张','One fewer ticket','한 장 줄이기'],['增加一张','One more ticket','한 장 늘리기'],
+   ['演示页面。没有真实售票、扣款或活动。','Demo page. No real ticket sales, charges or event.','데모 페이지입니다. 실제 판매, 결제, 행사는 없습니다.'],
+   ['票务小计','Tickets subtotal','티켓 소계'],['周边小计','Goods subtotal','굿즈 소계'],['合计','Total','합계'],
+   ['观演人 / 收件人姓名','Attendee / recipient name','관람자 / 수령인 이름'],
+   ['接收确认信息的邮箱','Email for the confirmation','확인 메일을 받을 이메일'],
+   ['手机号(选填,用于短信预览)','Phone (optional, for the SMS preview)','휴대폰 번호 (선택, 문자 미리보기용)'],
+   ['邮箱和手机号只用来生成下面的预览,页面不会保存,也不会发给任何人。','Your email and phone are only used to build the preview below. The page does not store them or send them to anyone.','이메일과 휴대폰 번호는 아래 미리보기를 만드는 데만 쓰이며, 저장되거나 누구에게도 전송되지 않습니다.'],
+   ['邮箱用于发送确认邮件。手机号只用于下面的短信预览,不会发送。','Your email is used to send the confirmation. The phone number is only used for the SMS preview and is not sent.','이메일은 확인 메일 발송에 쓰입니다. 휴대폰 번호는 문자 미리보기에만 쓰이며 발송되지 않습니다.'],
+   ['全部一起结算','Check out everything','전체 함께 결제'],['只结算票务','Check out tickets only','티켓만 결제'],['只结算周边','Check out goods only','굿즈만 결제'],
+   ['演示结算,不会扣款。没结算的内容会留在购物车里。','Demo checkout, nothing is charged. Anything you do not check out stays in the cart.','데모 결제이며 실제 결제는 되지 않습니다. 결제하지 않은 항목은 장바구니에 남습니다.'],
+   ['购买成功','Purchase complete','구매 완료'],
+   ['示例电子票和取货单,条码不可扫描。','Sample e-tickets and pickup slip; the barcode cannot be scanned.','예시 전자 티켓과 수령증이며 바코드는 스캔되지 않습니다.'],
+   ['确认信息预览','Confirmation preview','확인 메시지 미리보기'],
+   ['邮件','Email','메일'],['短信','SMS','문자'],['继续选购','Keep shopping','계속 쇼핑'],
+   ['没有头显可以参与吗?','Can I join without a headset?','헤드셋 없이도 참여할 수 있나요?'],
+   ['可以。现场座席票在 04 区观看公演。没有头显时,VR 互动用键盘和鼠标演示同样的事件。远程多人观演是后续扩展,目前不提供。','Yes. A seat ticket watches the show in Zone 04. Without a headset, the VR interactions are demonstrated with keyboard and mouse. Remote multi-user viewing is a later extension and is not offered now.','네. 현장 좌석 티켓은 04구역에서 공연을 봅니다. 헤드셋이 없으면 VR 상호작용은 키보드와 마우스로 같은 이벤트를 시연합니다. 원격 다중 접속 관람은 향후 확장이며 현재는 제공하지 않습니다.'],
+   ['什么时候到场?','When should I arrive?','언제 도착해야 하나요?'],
+   ['提前 30 分钟开放探索,按 01 到 03 区的顺序走。开演前 5 分钟回到 04 区就座。','Exploration opens 30 minutes early; walk Zones 01 to 03 in order. Be seated in Zone 04 five minutes before the show.','30분 전부터 탐험이 열립니다. 01~03구역 순서로 둘러보고, 공연 5분 전에 04구역 좌석으로 돌아오세요.'],
+   ['05 区什么时候去?','When do I visit Zone 05?','05구역은 언제 가나요?'],
+   ['建议演前或演后。演后预留 15 分钟,去高层回廊拍照,再按出口导览离场。屋顶是否开放,以场地可用性确认为准。','Before or after the show. Leave 15 minutes afterwards to take photos in the upper gallery, then follow the exit guide. Whether the roof is open depends on venue availability.','공연 전이나 후를 권합니다. 공연 후 15분 동안 상층 회랑에서 사진을 찍고 출구 안내에 따라 퇴장하세요. 옥상 개방 여부는 장소 사정에 따라 확인됩니다.'],
+   ['© 2026 SILENT OVERTURE · 未启之音 · fan concept website','© 2026 SILENT OVERTURE · fan concept website','© 2026 SILENT OVERTURE · fan concept website'],
+   ['专题设计 2 课程提案。图像为 AI 生成的概念视觉,不是现场照片。','Course proposal for Topic Design 2. Images are AI-generated concept visuals, not photos of the site.','전공 디자인 2 수업 제안입니다. 이미지는 AI로 생성한 컨셉 비주얼이며 현장 사진이 아닙니다.'],
+   ['页面导航','Page navigation','페이지 내비게이션'],
+   ['距离 12 月 16 日 Neon Live 开演的时间','Time until Neon Live on December 16','12월 16일 Neon Live 공연까지 남은 시간'],
+   ['SILENT OVERTURE 主视觉海报:四位成员站在霓虹舞台前','Silent Overture key visual: the four members in front of a neon stage','SILENT OVERTURE 메인 비주얼: 네온 무대 앞에 선 네 멤버'],
+   ['霓虹声波,会随指针移动变高','Neon sound waves that rise as the pointer moves','포인터를 따라 높아지는 네온 음파'],
+   ['阳光穿过玻璃穹顶,照进斑驳的多层商场中庭','Sunlight through the glass dome into the worn multi-storey atrium','유리 돔을 통과한 햇빛이 낡은 다층 중정을 비춥니다'],
+   ['THERA:金色尖发,举起手臂','THERA: spiky golden hair, arm raised','THERA: 금빛 뾰족한 머리, 팔을 든 모습'],
+   ['HERA:黑色马尾,戴白色耳机,紫色眼睛','HERA: black ponytail, white headphones, purple eyes','HERA: 검은 포니테일, 흰 헤드폰, 보라색 눈'],
+   ['DAWN:白色到红色渐变的双马尾,蓝色眼睛','DAWN: white-to-red gradient twin tails, blue eyes','DAWN: 흰색에서 빨강으로 이어지는 양갈래 머리, 파란 눈'],
+   ['UPI:黑色短发,戴猫耳耳机','UPI: short black hair, cat-ear headphones','UPI: 검은 단발, 고양이 귀 헤드폰'],
+   ['沿河的白色欧式风格大型建筑外观','Exterior of a large white European-style building by a river','강변의 흰색 유럽풍 대형 건물 외관'],
+   ['从高处俯拍的空旷中庭,钢结构玻璃顶下停着几辆车','An empty atrium shot from above; a few cars parked under the steel-and-glass roof','높은 곳에서 찍은 텅 빈 중정, 철골 유리 지붕 아래 차 몇 대가 서 있습니다'],
+   ['切换示意图视角','Switch diagram view','도식 시점 전환'],
+   ['五区分布的概念示意图','Concept diagram of the five zones','다섯 구역 배치 개념도'],
+   ['废弃商场中庭概念图:积灰的环形回廊和天窗,地面空旷','Concept of the abandoned atrium: dusty ring galleries and a skylight over an empty floor','폐쇄된 쇼핑몰 중정 컨셉: 먼지 쌓인 원형 회랑과 천창, 텅 빈 바닥'],
+   ['翻新后的中庭概念图:霓虹灯光、主舞台和观众席,标注五个区域','Concept of the renovated atrium: neon lights, main stage and seating, with five zones marked','리노베이션된 중정 컨셉: 네온 조명, 메인 무대, 객석과 다섯 구역 표시'],
+   ['例如:林夏','e.g. Lin Xia','예: 린샤'],['选填','Optional','선택'],
+   /* dynamic strings */
+   ['购物车是空的。上面选一个票档,或者在周边展示里挑一件。','The cart is empty. Choose a ticket above, or pick an item from the goods display.','장바구니가 비어 있습니다. 위에서 티켓을 고르거나 굿즈 전시에서 하나를 고르세요.'],
+   ['移除','Remove','삭제'],['减少','Decrease','줄이기'],['增加','Increase','늘리기'],
+   ['已加入购物车:','Added to cart: ','장바구니에 담았습니다: '],
+   ['没有可结算的内容','Nothing to check out','결제할 항목이 없습니다'],
+   ['官网周边价','Official site price','공식 사이트 가격'],['概念设计 · 示例价','Concept design · sample price','컨셉 디자인 · 예시 가격'],
+   ['Silent Overture ✧ 未启之音 ✧ ','Silent Overture ✧ ','사일런트 오버추어 ✧ '],
+   ['应援灯棒','Neon Light Stick','응원봉'],
+   ['官方应援灯棒。三种灯光模式,长按开关切换。可选团体版或四位成员的个人版。','The official light stick, with three light modes (hold the switch to change). Choose the group version or one of the four members.','공식 응원봉. 세 가지 조명 모드, 스위치를 길게 눌러 전환합니다. 단체판 또는 멤버 개인판을 고를 수 있습니다.'],
+   ['团体版','Group','단체판'],
+   ['随机成员卡','Random Member Card','랜덤 멤버 카드'],
+   ['随机抽取一位成员的收藏卡,Thera、Hera、Dawn、Upi 四选一。','A random member collector card: one of Thera, Hera, Dawn or Upi.','멤버 한 명의 컬렉션 카드를 무작위로 뽑습니다. 테라, 헤라, 던, 우피 중 하나입니다.'],
+   ['随机一张','One at random','랜덤 1장'],
+   ['限定亚克力立牌','Limited Acrylic Stand','한정 아크릴 스탠드'],
+   ['限定亚克力立牌,四位成员站在同一块底座上。','A limited acrylic stand with all four members on one base.','네 멤버가 한 받침대 위에 서 있는 한정 아크릴 스탠드.'],
+   ['四人合影款','Group of four','4인 단체'],
+   ['成员应援钥匙扣','Member Keychain','멤버 응원 키링'],
+   ['概念设计稿里的成员钥匙扣,四款成员头像各一个。示例商品。','Member keychains from the concept sheet, one for each of the four. Sample item.','컨셉 시안 속 멤버 키링, 네 멤버가 한 개씩. 예시 상품.'],
+   ['四款随机','Random of four','4종 랜덤'],
+   ['硅胶应援手环','Silicone Band','실리콘 응원 밴드'],
+   ['四种成员颜色的硅胶手环,概念设计稿。示例商品。','Silicone bands in the four member colours, from the concept sheet. Sample item.','네 멤버 색의 실리콘 밴드, 컨셉 시안. 예시 상품.'],
+   ['随机颜色','Random colour','랜덤 색상'],
+   ['应援挂绳','Lanyard','응원 랜야드'],
+   ['印有 SILENT OVERTURE 标识的挂绳,概念设计稿。示例商品。','A lanyard printed with the SILENT OVERTURE mark, from the concept sheet. Sample item.','SILENT OVERTURE 로고가 인쇄된 랜야드, 컨셉 시안. 예시 상품.'],
+   ['标准款','Standard','기본형'],
+   ['点击放大选购','tap to enlarge and choose','눌러서 확대하고 선택'],
+   /* tickets & events */
+   ['Neon Live · 现场座席','Neon Live · Seat','Neon Live · 현장 좌석'],
+   ['无座位(自由参观)','No seat (free roaming)','좌석 없음 (자유 관람)'],
+   ['2026年12月16日(周三)19:00','Wed, December 16, 2026, 19:00','2026년 12월 16일(수) 19:00'],
+   ['2026年12月16日(周三)12:00–18:00(示例)','Wed, December 16, 2026, 12:00–18:00 (sample)','2026년 12월 16일(수) 12:00–18:00 (예시)'],
+   ['01 区检票','Check-in at Zone 01','01구역 체크인'],['01 区登记','Sign-up at Zone 01','01구역 등록'],
+   ['18:30 起开放探索,从 01 区检票并领取荧光棒。','Exploration opens from 18:30. Check in at Zone 01 and pick up your light stick.','18:30부터 탐험이 열립니다. 01구역에서 체크인하고 응원봉을 받으세요.'],
+   ['19:00 开演,请在 18:55 前回到 04 区就座。','The show starts at 19:00. Please be seated in Zone 04 by 18:55.','19:00에 공연이 시작됩니다. 18:55까지 04구역 좌석으로 돌아와 주세요.'],
+   ['演后预留 15 分钟,可去 05 区高层回廊拍照。','Leave 15 minutes after the show to take photos in the Zone 05 upper gallery.','공연 후 15분 동안 05구역 상층 회랑에서 사진을 찍을 수 있습니다.'],
+   ['限时快闪,记忆街区(02 区)开放,示例时间 12:00–18:00。','A limited pop-up; Memory Street (Zone 02) is open, sample hours 12:00–18:00.','기간 한정 팝업으로 기억 거리(02구역)가 열립니다. 예시 시간 12:00–18:00.'],
+   ['周边摊位、饮品小食和休息桌都在这里。','Goods stalls, drinks, snacks and rest tables are all here.','굿즈 부스, 음료와 간식, 휴식 테이블이 모두 여기 있습니다.'],
+   ['不含公演座位。','No concert seat included.','공연 좌석은 포함되지 않습니다.'],
+   ['周边在 02 区记忆街区的摊位,凭订单号领取。','Pick up goods at the Zone 02 Memory Street stalls with your order number.','굿즈는 02구역 기억 거리 부스에서 주문 번호로 수령합니다.'],
+   ['02 区记忆街区摊位,凭订单号','Zone 02 Memory Street stalls, with your order number','02구역 기억 거리 부스, 주문 번호로'],
+   ['这是课程概念提案里的演示订单,没有真实活动和扣款,请勿前往场地。','This is a demo order from a course concept proposal. There is no real event or charge; please do not go to the site.','수업 컨셉 제안 속 데모 주문입니다. 실제 행사와 결제는 없으니 현장에 가지 마세요.'],
+   ['订单号','Order no.','주문 번호'],['票务','Tickets','티켓'],['周边','Goods','굿즈'],['座位','Seat','좌석'],['周边领取','Goods pickup','굿즈 수령'],
+   ['须知','Notes','안내'],['观演人','Attendee','관람자'],['入口','Entrance','입구'],
+   ['收件人','To','수신'],['发件人','From','발신'],['主题','Subject','제목'],
+   ['你好 ','Hello ','안녕하세요 '],['你的订单已确认(演示)。','Your order is confirmed (demo).','주문이 확인되었습니다 (데모).'],
+   ['未填写手机号','no phone number','휴대폰 번호 없음'],['模拟预览','simulated preview','시뮬레이션 미리보기'],
+   ['GOODS · 周边取货单','GOODS · Pickup slip','GOODS · 굿즈 수령증'],
+   ['演示模式:邮件和短信只在这里预览,没有真正发出。部署版填入 EmailJS 设置后,邮件可以真实发送。','Demo mode: the email and SMS are only previewed here and not actually sent. With EmailJS configured in the deployed version, the email can be sent for real.','데모 모드: 메일과 문자는 여기서 미리보기만 하며 실제로 발송되지 않습니다. 배포판에서 EmailJS를 설정하면 메일을 실제로 보낼 수 있습니다.'],
+   ['邮件没有发送成功。请检查 EmailJS 的设置,或稍后再试。','The email could not be sent. Check the EmailJS settings or try again later.','메일을 보내지 못했습니다. EmailJS 설정을 확인하거나 나중에 다시 시도하세요.'],
+   /* zones */
+   ['旧入口 · 唤醒区','Old entrance · Wake-up zone','옛 입구 · 웨이크업 구역'],
+   ['检票、领取荧光棒和导览。','Check-in, light stick and guide pickup.','체크인, 응원봉과 안내 수령.'],
+   ['扳机确认入场,选择导览。','Pull the trigger to confirm entry and choose a guide.','트리거로 입장을 확인하고 안내를 고릅니다.'],
+   ['导览灯亮起,显示五区地图。','The guide light turns on and shows the five-zone map.','안내등이 켜지고 다섯 구역 지도가 표시됩니다.'],
+   ['选择「开始探索」后,入口灯光与环境声启动,引导观众前往记忆街区。','After choosing “Start exploring”, the entrance lights and ambient sound start and lead the audience to Memory Street.','「탐험 시작」을 고르면 입구 조명과 환경음이 켜지고 관객을 기억 거리로 안내합니다.'],
+   ['记忆街区','Memory Street','기억 거리'],
+   ['周边、餐饮与休憩。','Goods, food and rest.','굿즈, 식음, 휴식.'],
+   ['指向店铺标识并确认。','Point at a shop sign and confirm.','가게 표지를 가리키고 확인합니다.'],
+   ['显示餐饮、周边与休息点信息。','Shows information about food, goods and rest spots.','식음, 굿즈, 휴식 공간 정보를 보여 줍니다.'],
+   ['周边摊位提供卡带、明信片、徽章和荧光棒。餐饮点有饮品、小食与休息桌,候餐区避开通往主舞台的通道。','Goods stalls offer cassettes, postcards, badges and light sticks. Food points have drinks, snacks and rest tables, with the waiting area kept clear of the route to the main stage.','굿즈 부스에서는 카세트, 엽서, 뱃지, 응원봉을 판매합니다. 식음 코너에는 음료, 간식, 휴식 테이블이 있고 대기 구역은 메인 무대로 가는 통로를 피해 있습니다.'],
+   ['儿童 · 轻互动区','Kids · Light interaction zone','어린이 · 라이트 인터랙션 구역'],
+   ['光点追踪与应援输入。','Light-point tracking and cheer input.','빛 추적과 응원 입력.'],
+   ['选择或踩中光点,完成追踪。','Pick or step on the light points to finish the tracking.','빛의 점을 고르거나 밟아 추적을 완료합니다.'],
+   ['光点移动,结果汇入舞台光效。','The points move and the result feeds into the stage lighting.','빛의 점이 움직이고 결과가 무대 조명 효과에 반영됩니다.'],
+   ['现场使用地面感应输入,VR 使用射线选择,两个入口触发同一个互动事件。','On site it uses floor sensors, in VR it uses ray selection; both trigger the same interaction event.','현장에서는 바닥 센서 입력, VR에서는 레이 선택을 쓰며 두 방식 모두 같은 상호작용 이벤트를 발생시킵니다.'],
+   ['中庭主舞台','Atrium main stage','중정 메인 무대'],
+   ['团队公演、座位与应援。','The group show, seating and cheering.','팀 공연, 좌석, 응원.'],
+   ['选择座位,挥动应援棒或控制器。','Choose a seat and wave a light stick or controller.','좌석을 고르고 응원봉이나 컨트롤러를 흔듭니다.'],
+   ['应援输入改变粒子强度与灯光。','Cheering input changes particle intensity and lighting.','응원 입력이 파티클 강도와 조명을 바꿉니다.'],
+   ['四名成员在中央屏幕与舞台登场。座位面向舞台,保留中央和侧边通道。正式公演统一在这里观看。','The four members appear on the central screen and stage. Seats face the stage with centre and side aisles kept open. The main show is watched here.','네 멤버가 중앙 스크린과 무대에 등장합니다. 좌석은 무대를 향하며 중앙과 양옆 통로를 비워 둡니다. 본 공연은 모두 여기서 관람합니다.'],
+   ['高层回廊','Upper gallery','상층 회랑'],
+   ['高层拍照与俯瞰留念。','Photos and a bird’s-eye view from above.','상층 촬영과 내려다보는 기념.'],
+   ['选拍照位并确认,最后选择出口。','Choose a photo spot and confirm, then choose the exit.','촬영 위치를 고르고 확인한 뒤 마지막으로 출구를 고릅니다.'],
+   ['提示保存画面,复位互动并返回首页。','Prompts you to save the image, resets the interaction and returns home.','화면 저장을 안내하고 상호작용을 초기화한 뒤 처음으로 돌아갑니다.'],
+   ['A 俯瞰拍照位,固定视角记录舞台全景。B 主题文字打卡。C 屋顶备选位,可用时记录城市背景。','A: bird’s-eye photo spot with a fixed view of the whole stage. B: themed-text check-in. C: optional rooftop spot with the city behind, when available.','A 조감 촬영 위치: 고정 시점으로 무대 전체를 담습니다. B 테마 문구 체크인. C 옥상 대체 위치: 이용 가능할 때 도시 배경을 담습니다.'],
+   ['功能','Function','기능'],['观众操作','Audience action','관객 행동'],['空间反馈','Space feedback','공간 반응'],['备注','Notes','비고'],
+   /* run of show */
+   ['开放探索','Exploration','탐험'],
+   ['观众从旧入口出发,沿 01 到 03 区探索,寻找歌词与光点线索。','The audience starts from the old entrance and explores Zones 01 to 03, looking for lyrics and light clues.','관객은 옛 입구에서 출발해 01~03구역을 탐험하며 가사와 빛의 단서를 찾습니다.'],
+   ['领取荧光棒,完成光点追踪。18:55 前回到 04 区就座。','Pick up a light stick and finish the light tracking. Be seated in Zone 04 by 18:55.','응원봉을 받고 빛 추적을 마칩니다. 18:55까지 04구역 좌석으로 돌아옵니다.'],
+   ['03 区的互动结果汇入舞台光效。','Results from Zone 03 flow into the stage lighting.','03구역의 상호작용 결과가 무대 조명에 반영됩니다.'],
+   ['唤醒','Awakening','각성'],
+   ['入口亮灯,四名成员登场。','The entrance lights up and the four members appear.','입구에 불이 켜지고 네 멤버가 등장합니다.'],
+   ['确认就位,进入首曲。','Confirm you are in place and start the first song.','자리를 확인하고 첫 곡으로 들어갑니다.'],
+   ['Cue C01,切换开场素材。','Cue C01, switch to the opening material.','Cue C01, 오프닝 영상으로 전환.'],
+   ['记忆','Memory','기억'],
+   ['成员介绍,第一组歌曲。','Member introductions and the first set of songs.','멤버 소개와 첫 번째 곡 세트.'],
+   ['选择应援色。','Choose your cheer colour.','응원 색을 고릅니다.'],
+   ['音频分析控制声波和灯光。','Audio analysis drives sound waves and lights.','오디오 분석이 음파와 조명을 제어합니다.'],
+   ['共鸣','Resonance','공명'],
+   ['舞台显示 03 区的互动结果。','The stage shows the interaction results from Zone 03.','무대에 03구역의 상호작용 결과가 표시됩니다.'],
+   ['挥动控制器或荧光棒。','Wave a controller or light stick.','컨트롤러나 응원봉을 흔듭니다.'],
+   ['输入过滤,映射粒子强度。','Input is filtered and mapped to particle intensity.','입력을 필터링해 파티클 강도에 매핑합니다.'],
+   ['重启','Restart','재가동'],
+   ['第二组歌曲,节奏增强。','The second set of songs, with a stronger beat.','두 번째 곡 세트, 리듬이 강해집니다.'],
+   ['集体应援。','Cheer together.','함께 응원합니다.'],
+   ['按曲目切换 Cue 与视觉层。','Cues and visual layers switch with each song.','곡에 따라 Cue와 비주얼 레이어를 전환합니다.'],
+   ['开幕','Opening','개막'],
+   ['主题曲,旧招牌亮起「未启之音」。','The theme song; the old sign lights up with “Silent Overture”.','타이틀곡, 낡은 간판에 「사일런트 오버추어」가 켜집니다.'],
+   ['和成员共同完成终章。','Finish the finale together with the members.','멤버와 함께 피날레를 완성합니다.'],
+   ['叠加应援光效与主题文字。','Cheer light effects and theme text are layered on.','응원 조명 효과와 테마 문구를 겹쳐 올립니다.'],
+   ['谢幕','Curtain call','인사'],
+   ['结束画面,恢复导览灯。','The ending screen; guide lights return.','엔딩 화면, 안내등이 다시 켜집니다.'],
+   ['散场,准备演后拍照。','Leave your seat and get ready for photos.','퇴장하고 공연 후 촬영을 준비합니다.'],
+   ['结束 Cue,复位互动状态。','End cue; the interaction state resets.','종료 Cue, 상호작용 상태를 초기화합니다.'],
+   ['演后拍照','Photos after the show','공연 후 촬영'],
+   ['去 05 区高层回廊拍照,再按出口导览离场。','Take photos in the Zone 05 upper gallery, then leave by the exit guide.','05구역 상층 회랑에서 사진을 찍고 출구 안내에 따라 퇴장합니다.'],
+   ['选拍照位并确认。','Choose a photo spot and confirm.','촬영 위치를 고르고 확인합니다.'],
+   ['画面与演出','Visuals and show','화면과 연출'],['观众互动','Audience interaction','관객 참여'],['幕后控制','Backstage control','무대 뒤 제어'],
+   [' 分钟',' min',' 분'],
+   /* hints */
+   ['已全部恢复:普通指针,拖尾也变回最初的彩色。点一张成员卡片可以再换上应援棒。','Everything is back to normal: the cursor, and the trail in its original colours. Click a member card to put a light stick on again.','모두 되돌렸습니다: 기본 커서와 처음의 컬러 트레일. 멤버 카드를 누르면 다시 응원봉으로 바꿀 수 있습니다.'],
+   ['指针已恢复。点一张成员卡片,可以再换上应援棒。','Cursor restored. Click a member card to put a light stick on again.','커서를 되돌렸습니다. 멤버 카드를 누르면 다시 응원봉으로 바꿀 수 있습니다.'],
+   ['点一张成员卡片,换成她的应援色。之后点击页面任意位置,会迸出她颜色的光点。','Click a member card to switch to her cheer colour. After that, clicking anywhere bursts out light points in her colour.','멤버 카드를 눌러 그녀의 응원 색으로 바꾸세요. 이후 화면 아무 곳이나 누르면 그 색의 빛이 터져 나옵니다.'],
+   ['已全部恢复:彩色光点。点一张成员卡片可以再换她的应援色。','Everything is back to normal: colourful light points. Click a member card to switch to her cheer colour again.','모두 되돌렸습니다: 컬러 빛 효과. 멤버 카드를 누르면 다시 그녀의 응원 색으로 바꿀 수 있습니다.']
+  ].forEach(function(r){D[r[0]]=[r[1],r[2]]});
+  function T(zh){if(LANG==='zh'||zh==null)return zh;var r=D[zh];return r?r[LANG==='en'?0:1]:zh}
+  function L3(zh,en,ko){return LANG==='en'?en:LANG==='ko'?ko:zh}
+
+  var STATIC=[];
+  (function(){
+    var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),n;
+    while((n=w.nextNode())){
+      if(n.parentElement.closest('script,style'))continue;
+      var t=n.nodeValue.trim();if(t&&D[t])STATIC.push({n:n,zh:n.nodeValue,k:t});
+    }
+    [].slice.call(document.querySelectorAll('[aria-label],[alt],[placeholder]')).forEach(function(e){
+      ['aria-label','alt','placeholder'].forEach(function(a){var v=e.getAttribute(a);if(v&&D[v])STATIC.push({e:e,a:a,k:v})});
+    });
+  })();
+  var hintFn=null;
+  function setHint(f){hintFn=f;$('#fxhint').textContent=f()}
+
+  /* ===== EmailJS 设置 =====
+     留空时页面只在本页预览确认邮件和短信。
+     部署到自己的网站后,填入 EmailJS 的三个值,订票后就会真的发邮件。 */
+  var EMAILJS={publicKey:'',serviceId:'',templateId:''};
+  var LIVE=!!(EMAILJS.publicKey&&EMAILJS.serviceId&&EMAILJS.templateId);
+
+  /* ===== neon sound-wave band ===== */
+  var band=$('#band'),B,ptr={x:0,on:false},t0=performance.now(),raf=0,last=0,vis=true;
+  function setup(cv){
+    var r=cv.getBoundingClientRect(),dpr=Math.min(2,window.devicePixelRatio||1);
+    var w=Math.max(1,Math.round(r.width)),h=Math.max(1,Math.round(r.height));
+    cv.width=w*dpr;cv.height=h*dpr;
+    var ctx=cv.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);
+    return{w:w,h:h,ctx:ctx};
+  }
+  function drawBand(now){
+    if(!B)return;
+    var ctx=B.ctx,w=B.w,h=B.h,t=(now-t0)/1000;
+    ctx.clearRect(0,0,w,h);
+    var n=Math.max(12,Math.floor(w/9)),gap=w/n,bw=Math.max(2,gap*0.5);
+    var g=ctx.createLinearGradient(0,0,w,0);
+    g.addColorStop(0,'#35E3F5');g.addColorStop(0.5,'#8B5CFF');g.addColorStop(1,'#F052C8');
+    ctx.fillStyle=g;ctx.shadowColor='rgba(139,92,255,.75)';ctx.shadowBlur=12;
+    ctx.beginPath();
+    for(var i=0;i<n;i++){
+      var u=i/n,x=i*gap+(gap-bw)/2;
+      var a=0.14+0.86*Math.abs(Math.sin(u*11+t*1.5)*Math.cos(u*3.3-t*0.8));
+      if(ptr.on){var dx=x-ptr.x;a+=0.9*Math.exp(-(dx*dx)/(2*80*80))}
+      a=Math.min(1,a);
+      var bh=Math.max(4,a*h*0.9);
+      ctx.rect(x,(h-bh)/2,bw,bh);
+    }
+    ctx.fill();ctx.shadowBlur=0;
+  }
+  function loop(now){raf=requestAnimationFrame(loop);if(now-last<33)return;last=now;drawBand(now)}
+  function start(){if(reduce){drawBand(t0+1500);return}if(!raf&&vis&&!document.hidden)raf=requestAnimationFrame(loop)}
+  function stop(){cancelAnimationFrame(raf);raf=0}
+  band.addEventListener('pointermove',function(e){var r=band.getBoundingClientRect();ptr.x=e.clientX-r.left;ptr.on=true;if(reduce)drawBand(t0+1500)});
+  ['pointerleave','pointercancel'].forEach(function(n){band.addEventListener(n,function(){ptr.on=false;if(reduce)drawBand(t0+1500)})});
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){vis=es[0].isIntersecting;vis?start():stop()}).observe(band)}
+  document.addEventListener('visibilitychange',function(){document.hidden?stop():start()});
+  var rt,lw=0;
+  if('ResizeObserver' in window){new ResizeObserver(function(){var w=band.getBoundingClientRect().width;if(Math.abs(w-lw)<1)return;lw=w;clearTimeout(rt);rt=setTimeout(function(){B=setup(band);drawBand(performance.now())},120)}).observe(band)}
+  B=setup(band);drawBand(performance.now());start();
+
+  /* ===== countdown (DEC 16, 示例时间, 韩国时间) ===== */
+  var target=new Date('2026-12-16T19:00:00+09:00').getTime();
+  function pad(n){return String(n).padStart(2,'0')}
+  function tick(){
+    var d=Math.max(0,target-Date.now()),s=Math.floor(d/1000);
+    $('#cd-d').textContent=pad(Math.floor(s/86400));
+    $('#cd-h').textContent=pad(Math.floor(s%86400/3600));
+    $('#cd-m').textContent=pad(Math.floor(s%3600/60));
+    $('#cd-s').textContent=pad(s%60);
+  }
+  tick();setInterval(tick,1000);
+
+  /* ===== zones ===== */
+  var zones=[
+    {n:'01',zh:'旧入口 · 唤醒区',fn:'检票、领取荧光棒和导览。',act:'扳机确认入场,选择导览。',fb:'导览灯亮起,显示五区地图。',note:'选择「开始探索」后,入口灯光与环境声启动,引导观众前往记忆街区。'},
+    {n:'02',zh:'记忆街区',fn:'周边、餐饮与休憩。',act:'指向店铺标识并确认。',fb:'显示餐饮、周边与休息点信息。',note:'周边摊位提供卡带、明信片、徽章和荧光棒。餐饮点有饮品、小食与休息桌,候餐区避开通往主舞台的通道。'},
+    {n:'03',zh:'儿童 · 轻互动区',fn:'光点追踪与应援输入。',act:'选择或踩中光点,完成追踪。',fb:'光点移动,结果汇入舞台光效。',note:'现场使用地面感应输入,VR 使用射线选择,两个入口触发同一个互动事件。'},
+    {n:'04',zh:'中庭主舞台',fn:'团队公演、座位与应援。',act:'选择座位,挥动应援棒或控制器。',fb:'应援输入改变粒子强度与灯光。',note:'四名成员在中央屏幕与舞台登场。座位面向舞台,保留中央和侧边通道。正式公演统一在这里观看。'},
+    {n:'05',zh:'高层回廊',fn:'高层拍照与俯瞰留念。',act:'选拍照位并确认,最后选择出口。',fb:'提示保存画面,复位互动并返回首页。',note:'A 俯瞰拍照位,固定视角记录舞台全景。B 主题文字打卡。C 屋顶备选位,可用时记录城市背景。'}
+  ];
+  var zb=$('#zonebtns'),zp=$('#zpanel');
+  var curZone=3;
+  function buildZoneBtns(){
+    zb.textContent='';
+    zones.forEach(function(z,i){
+      var li=el('li'),b=el('button','zbtn');b.type='button';b.setAttribute('aria-pressed',i===curZone?'true':'false');b.dataset.i=i;
+      b.appendChild(el('b',null,z.n));b.appendChild(el('span',null,T(z.zh)));li.appendChild(b);zb.appendChild(li);
+    });
+  }
+  buildZoneBtns();
+  function showZone(i){
+    var z=zones[i];curZone=i;
+    $$('.zbtn').forEach(function(b){b.setAttribute('aria-pressed',String(+b.dataset.i===i))});
+    zp.textContent='';
+    var h=el('div','zhead');h.appendChild(el('div','big',z.n));h.appendChild(el('h3',null,T(z.zh)));
+    var d=el('dl','zbody');
+    [['功能',z.fn],['观众操作',z.act],['空间反馈',z.fb],['备注',z.note]].forEach(function(r){var w=el('div');w.appendChild(el('dt',null,T(r[0])));w.appendChild(el('dd',null,T(r[1])));d.appendChild(w)});
+    zp.appendChild(h);zp.appendChild(d);
+  }
+  zb.addEventListener('click',function(e){var b=e.target.closest('.zbtn');if(b)showZone(+b.dataset.i)});
+  showZone(3);
+  var mi=$('#mapimg');
+  function view(which){
+    $('#v-front').setAttribute('aria-pressed',String(which==='front'));
+    $('#v-bird').setAttribute('aria-pressed',String(which==='bird'));
+    mi.src=which==='front'?'assets/map-front.jpg':'assets/map-bird.jpg';
+  }
+  $('#v-front').addEventListener('click',function(){view('front')});
+  $('#v-bird').addEventListener('click',function(){view('bird')});
+
+  /* ===== run of show ===== */
+  var segs=[
+    {k:'off',min:30,t:'18:30–19:00',zh:'开放探索',show:'观众从旧入口出发,沿 01 到 03 区探索,寻找歌词与光点线索。',act:'领取荧光棒,完成光点追踪。18:55 前回到 04 区就座。',back:'03 区的互动结果汇入舞台光效。'},
+    {k:'c1',min:5,t:'19:00–19:05',zh:'唤醒',show:'入口亮灯,四名成员登场。',act:'确认就位,进入首曲。',back:'Cue C01,切换开场素材。'},
+    {k:'c2',min:15,t:'19:05–19:20',zh:'记忆',show:'成员介绍,第一组歌曲。',act:'选择应援色。',back:'音频分析控制声波和灯光。'},
+    {k:'c1',min:8,t:'19:20–19:28',zh:'共鸣',show:'舞台显示 03 区的互动结果。',act:'挥动控制器或荧光棒。',back:'输入过滤,映射粒子强度。'},
+    {k:'c2',min:15,t:'19:28–19:43',zh:'重启',show:'第二组歌曲,节奏增强。',act:'集体应援。',back:'按曲目切换 Cue 与视觉层。'},
+    {k:'c1',min:12,t:'19:43–19:55',zh:'开幕',show:'主题曲,旧招牌亮起「未启之音」。',act:'和成员共同完成终章。',back:'叠加应援光效与主题文字。'},
+    {k:'c2',min:5,t:'19:55–20:00',zh:'谢幕',show:'结束画面,恢复导览灯。',act:'散场,准备演后拍照。',back:'结束 Cue,复位互动状态。'},
+    {k:'off',min:15,t:'20:00–20:15',zh:'演后拍照',show:'去 05 区高层回廊拍照,再按出口导览离场。',act:'选拍照位并确认。',back:'提示保存画面,复位互动并返回首页。'}
+  ];
+  var TOTAL=105,bar=$('#bar'),sp=$('#spanel');
+  var curSeg=2;
+  function buildBar(){
+    bar.textContent='';
+    segs.forEach(function(s,i){
+      var nm=T(s.zh),b=el('button',s.k,s.min>=8?nm:nm.charAt(0));b.type='button';
+      b.style.flexBasis=(s.min/TOTAL*100)+'%';
+      b.setAttribute('aria-pressed',i===curSeg?'true':'false');b.setAttribute('aria-label',s.t+' '+nm+', '+s.min+T(' 分钟'));b.dataset.i=i;
+      bar.appendChild(b);
+    });
+  }
+  buildBar();
+  [[0,'18:30'],[30,'19:00'],[90,'20:00'],[105,'20:15']].forEach(function(p){var s=el('span',null,p[1]);s.style.left=(p[0]/TOTAL*100)+'%';$('#ticks').appendChild(s)});
+  function showSeg(i){
+    var s=segs[i];curSeg=i;
+    $$('#bar button').forEach(function(b){b.setAttribute('aria-pressed',String(+b.dataset.i===i))});
+    sp.textContent='';
+    var a=el('div');a.appendChild(el('p','t',s.t+' · '+s.min+T(' 分钟')));a.appendChild(el('h3',null,T(s.zh)));sp.appendChild(a);
+    [['画面与演出',s.show],['观众互动',s.act],['幕后控制',s.back]].forEach(function(r){var w=el('dl');var d=el('div');d.appendChild(el('dt',null,T(r[0])));d.appendChild(el('dd',null,T(r[1])));w.appendChild(d);sp.appendChild(w)});
+  }
+  bar.addEventListener('click',function(e){var b=e.target.closest('button');if(b)showSeg(+b.dataset.i)});
+  showSeg(2);
+
+  /* ===== cast / cheer colour ===== */
+  var cheer={name:'DAWN',c:'#FF5C93'};
+  $('#castgrid').addEventListener('click',function(e){
+    var b=e.target.closest('.card');if(!b)return;
+    $$('.card').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});
+    cheer={name:b.dataset.name,c:b.dataset.c};
+    root.style.setProperty('--cheer',cheer.c);
+    setCheerLbl();
+    var rr=b.getBoundingClientRect();
+    setMember(cheer.name,cheer.c,e.clientX||rr.left+rr.width/2,e.clientY||rr.top+rr.height/2);
+  });
+  root.style.setProperty('--cheer',cheer.c);
+  function setCheerLbl(){$('#cheerlbl').textContent=T('应援色')+' · '+cheer.name}
+
+  /* ===== effects: scroll ===== */
+  var fine=matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var vh=window.innerHeight;
+  var prog=$('#progress'),orbs=$$('.aurora i'),sTick=false;
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+  function pageTop(e){var t=0;while(e){t+=e.offsetTop;e=e.offsetParent}return t}
+  /* scroll-linked reveal: progress comes from scroll position, so wheel and touch behave the same */
+  var RV=reduce?[]:$$('.sec>.eyebrow,.sec>.sub,.beats li,.photo,.card,.ev,.facts>div,.cta,.pull,.archive,.tier,.mapbox,.faq,.ring,.cartbox').map(function(e){e.classList.add('rv');return{e:e,top:0,p:-1}});
+  function splitText(h,txt,again){
+    if(txt==null){txt=h.textContent.replace(/\s+/g,' ').trim();h.dataset.zh=txt}
+    if(!h.closest('h1'))h.setAttribute('aria-label',txt);
+    h.textContent='';
+    var n=0,LAT=/^[A-Za-z0-9’'.,:!?\-·&]+$/;
+    (txt.match(/[A-Za-z0-9’'.,:!?\-·&]+|\s|[\s\S]/g)||[]).forEach(function(t){
+      if(t===' '){h.appendChild(document.createTextNode(' '));return}
+      if(LAT.test(t)){
+        var w=el('span','w');w.setAttribute('aria-hidden','true');
+        for(var i=0;i<t.length;i++){var c=el('span','ch',t.charAt(i));c.style.setProperty('--i',n++);w.appendChild(c)}
+        h.appendChild(w);
+      }else{var c2=el('span','ch',t);c2.setAttribute('aria-hidden','true');c2.style.setProperty('--i',n++);h.appendChild(c2)}
+    });
+    h.style.setProperty('--n',n);h.classList.add('sp');
+  }
+  var SP=reduce?[]:$$('.sec>h2,.cta h2,.logo .big').map(function(e){splitText(e);e.style.setProperty('--hp','0');return{e:e,top:0,p:-1}});
+  var HERO=reduce?[]:$$('h1 .l1,h1 .l2');
+  if(HERO.length){var h1=$('h1');h1.setAttribute('aria-label',HERO.map(function(x){return x.textContent}).join(' '));HERO.forEach(function(x){splitText(x);x.removeAttribute('aria-label');x.setAttribute('aria-hidden','true');x.style.setProperty('--hp','0')})}
+  function revealHero(){
+    if(!HERO.length)return;var t0=performance.now();
+    (function f(now){var t=(now-t0)/1000;HERO.forEach(function(x,i){var p=clamp((t-i*.4)/1.3,0,1);x.style.setProperty('--hp',p.toFixed(3));x.classList.toggle('shown',p>=1)});if(t<1.3+.4*HERO.length)requestAnimationFrame(f)})(t0);
+  }
+  function rvMeasure(){RV.forEach(function(it){it.top=pageTop(it.e)});SP.forEach(function(it){it.top=pageTop(it.e)});rnMeasure()}
+  function rvFx(y){
+    RV.forEach(function(it){var p=Math.max(it.p,clamp((vh*0.94-(it.top-y))/(vh*0.3),0,1));if(Math.abs(p-it.p)>0.004||(p===1&&it.p!==1)||(p===0&&it.p!==0)){it.p=p;it.e.style.setProperty('--rp',p.toFixed(3))}});
+    SP.forEach(function(it){var p=Math.max(it.p,clamp((vh*0.92-(it.top-y))/(vh*0.26),0,1));if(Math.abs(p-it.p)>0.004||(p===1&&it.p!==1)||(p===0&&it.p!==0)){it.p=p;it.e.style.setProperty('--hp',p.toFixed(3));it.e.classList.toggle('shown',p>=1)}});
+  }
+
+  /* ===== renovation scene: old atrium to new, driven by scroll with eased follow ===== */
+  var rn=$('#renew'),rnFrame=$('.rn-frame',rn),rnZ=$$('.rn-zones li',rn),rnQ=0,rnTg=0,rnRaf=0,rnMax=900,rnTop=0;
+  function rnMeasure(){if(!rn)return;rnTop=pageTop(rn);rnMax=Math.hypot(rnFrame.clientWidth/2,rnFrame.clientHeight*0.62)+8;rnApply()}
+  function rnApply(){
+    var e=clamp(rnQ,0,1),q=e*e*(3-2*e);
+    rn.style.setProperty('--q',q.toFixed(4));rn.style.setProperty('--rr',(q*rnMax).toFixed(1)+'px');
+    rnZ.forEach(function(z,i){z.classList.toggle('on',q>=(i+1)/6)});
+  }
+  function rnStep(){rnRaf=0;var d=rnTg-rnQ;if(Math.abs(d)<0.0006){rnQ=rnTg}else{rnQ+=d*0.085}rnApply();if(rnQ!==rnTg)rnRaf=requestAnimationFrame(rnStep)}
+  function rnFx(y){
+    if(!rn)return;var total=Math.max(1,rn.offsetHeight-vh);
+    rnTg=clamp(((y-rnTop)/total-0.06)/0.78,0,1);
+    if(!rnRaf)rnRaf=requestAnimationFrame(rnStep);
+  }
+  if(rn&&reduce){rn.classList.add('static');rn.style.setProperty('--q','1');rn.style.setProperty('--rr','4000px');rnZ.forEach(function(z){z.classList.add('on')})}
+  var marqs=$$('.marq-in');
+  function buildMarq(m){var t=LANG==='zh'?m.dataset.text:(D[m.dataset.text]?D[m.dataset.text][LANG==='en'?0:1]:m.dataset.text),s='';for(var i=0;i<8;i++)s+=t;m.textContent=s}
+  marqs.forEach(buildMarq);
+  var par=[{e:$('.hero-art'),f:-0.07},{e:$('.logo .big'),f:0.05}].concat($$('.spark').map(function(s,i){return{e:s,f:i?0.14:-0.12}}));
+  function scrollFx(){
+    sTick=false;
+    var y=window.scrollY,max=Math.max(1,document.documentElement.scrollHeight-vh);
+    prog.style.transform='scaleX('+Math.min(1,y/max).toFixed(4)+')';
+    if(reduce)return;
+    orbs.forEach(function(o,i){o.style.transform='translate3d(0,'+(y*(i===1?-0.06:0.08)).toFixed(1)+'px,0)'});
+    par.forEach(function(p){if(!p.e||p.base==null)return;var c=p.base-y-vh/2;if(c>vh*1.2||c<-vh*1.2)return;p.e.style.transform='translate3d(0,'+(c*p.f).toFixed(1)+'px,0)'});
+    rvFx(y);rnFx(y);
+  }
+  function measure(){
+    vh=window.innerHeight;var y=window.scrollY;
+    par.forEach(function(p){if(!p.e)return;p.e.style.transform='none';var r=p.e.getBoundingClientRect();p.base=r.top+y+r.height/2});
+    rvMeasure();
+    scrollFx();
+  }
+  window.addEventListener('scroll',function(){if(!sTick){sTick=true;requestAnimationFrame(scrollFx)}},{passive:true});
+  var mt;
+  function remeasure(){clearTimeout(mt);mt=setTimeout(measure,150)}
+  window.addEventListener('resize',remeasure);window.addEventListener('load',remeasure);
+  if('ResizeObserver' in window){new ResizeObserver(remeasure).observe(document.body)}
+  measure();
+
+  if(fine&&!reduce){$$('.card').forEach(function(c){
+    c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;c.style.setProperty('--ry',(px*10).toFixed(2)+'deg');c.style.setProperty('--rx',(-py*10).toFixed(2)+'deg')});
+    c.addEventListener('pointerleave',function(){c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg')});
+  })}
+
+  /* ===== effects: mouse trail + light-stick cursor ===== */
+  var tcv=$('#trail'),tctx=tcv.getContext('2d'),TW=0,TH=0,parts=[],tRaf=0,lt=0;
+  var TRAIL0=['#35E3F5','#8B5CFF','#F052C8'],trailCols=TRAIL0.slice(),bound=false;
+  function sizeTrail(){var d=Math.min(1.5,window.devicePixelRatio||1);TW=window.innerWidth;TH=window.innerHeight;tcv.width=Math.round(TW*d);tcv.height=Math.round(TH*d);tcv.style.width=TW+'px';tcv.style.height=TH+'px';tctx.setTransform(d,0,0,d,0,0)}
+  sizeTrail();window.addEventListener('resize',sizeTrail);
+  function lighten(hex,t){var n=parseInt(hex.slice(1),16),r=n>>16,g=(n>>8)&255,b=n&255;return 'rgb('+Math.round(r+(255-r)*t)+','+Math.round(g+(255-g)*t)+','+Math.round(b+(255-b)*t)+')'}
+  function starPath(c,x,y,r){c.moveTo(x,y-r);c.quadraticCurveTo(x,y,x+r,y);c.quadraticCurveTo(x,y,x,y+r);c.quadraticCurveTo(x,y,x-r,y);c.quadraticCurveTo(x,y,x,y-r)}
+  function spawn(x,y,n,burst){
+    if(reduce)return;
+    for(var i=0;i<n;i++){
+      var a=Math.random()*6.2832,sp=burst?(1.4+Math.random()*3.8):(Math.random()*0.7);
+      parts.push({x:x+(Math.random()-.5)*4,y:y+(Math.random()-.5)*4,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp+(burst?0:0.12),life:0,max:(burst?650:520)+Math.random()*420,s:(burst?2.5:2)+Math.random()*3.5,c:trailCols[(Math.random()*trailCols.length)|0],star:Math.random()<0.3});
+    }
+    if(parts.length>220)parts.splice(0,parts.length-220);
+    if(!tRaf)tRaf=requestAnimationFrame(trailFrame);
+  }
+  function trailFrame(now){
+    tRaf=0;var dt=Math.min(40,now-(lt||now));lt=now;
+    tctx.clearRect(0,0,TW,TH);tctx.globalCompositeOperation='lighter';tctx.shadowBlur=8;
+    for(var i=parts.length-1;i>=0;i--){
+      var p=parts[i];p.life+=dt;if(p.life>=p.max){parts.splice(i,1);continue}
+      var k=1-p.life/p.max;p.x+=p.vx*dt/16;p.y+=p.vy*dt/16;p.vx*=0.985;p.vy*=0.985;
+      var r=p.s*(0.35+0.65*k);
+      tctx.globalAlpha=Math.min(1,k*1.2)*0.9;tctx.fillStyle=p.c;tctx.shadowColor=p.c;
+      tctx.beginPath();if(p.star){starPath(tctx,p.x,p.y,r*2.3)}else{tctx.arc(p.x,p.y,r,0,6.2832)}
+      tctx.fill();
+    }
+    tctx.globalAlpha=1;tctx.shadowBlur=0;tctx.globalCompositeOperation='source-over';
+    if(parts.length){tRaf=requestAnimationFrame(trailFrame)}else{lt=0;tctx.clearRect(0,0,TW,TH)}
+  }
+
+  var stick=$('#stick'),stickOn=false,stickShown=false,svgEl=null,swayT=0,lx=-1,ly=-1;
+  function starPoly(cx,cy,R,r,n){var p=[];for(var i=0;i<n*2;i++){var rad=i%2?r:R,a=-Math.PI/2+i*Math.PI/n;p.push((cx+Math.cos(a)*rad).toFixed(1)+','+(cy+Math.sin(a)*rad).toFixed(1))}return p.join(' ')}
+  var HEADS={
+    THERA:'<polygon points="'+starPoly(35,37,29,12.5,5)+'"/>',
+    HERA:'<circle cx="35" cy="36" r="19" fill="none" stroke="currentColor" stroke-width="9"/><circle cx="35" cy="36" r="6.5"/>',
+    DAWN:'<path d="M35 60C14 44 8 34 8 25a14 14 0 0 1 27-5 14 14 0 0 1 27 5c0 9-6 19-27 35z"/>',
+    UPI:'<path d="M13 31L10 8l16 10a22 22 0 0 1 18 0L60 8l-3 23a22 22 0 1 1-44 0z"/>'
+  };
+  function stickSVG(name,c){
+    return '<svg width="70" height="200" viewBox="0 0 70 200" style="color:'+c+'"><g fill="'+c+'" style="filter:drop-shadow(0 0 6px '+c+') drop-shadow(0 0 16px '+c+')">'+(HEADS[name]||HEADS.DAWN)+'</g><circle cx="35" cy="36" r="6" fill="#fff" opacity=".6"/><rect x="31" y="60" width="8" height="130" rx="4" fill="#EEF0FF" opacity=".93"/><rect x="29.5" y="130" width="11" height="32" rx="3" fill="#161A45"/></svg>';
+  }
+  function restRot(){if(svgEl)svgEl.style.transform='rotate(-24deg)'}
+  function moveStick(x,y,vx){
+    if(!stickShown){stick.style.visibility='visible';stickShown=true}
+    stick.style.transform='translate3d('+x+'px,'+y+'px,0)';
+    if(svgEl&&!reduce){svgEl.style.transform='rotate('+(-24+Math.max(-26,Math.min(26,vx*0.9)))+'deg)';clearTimeout(swayT);swayT=setTimeout(restRot,90)}
+  }
+  function activateStick(name,c){
+    stick.innerHTML=stickSVG(name,c);svgEl=stick.firstChild;restRot();
+    stickOn=true;stick.style.opacity='1';root.classList.add('has-stick');$('#stickoff').hidden=false;
+    if(lx>=0)moveStick(lx,ly,0);
+  }
+  function deactivateStick(){
+    stickOn=false;stick.innerHTML='';svgEl=null;stickShown=false;stick.style.visibility='hidden';
+    root.classList.remove('has-stick');$('#stickoff').hidden=true;
+    setHint(function(){return T('指针已恢复。点一张成员卡片,可以再换上应援棒。')});
+  }
+  function setMember(name,c,x,y){
+    trailCols=[c,lighten(c,.45),'#FFFFFF'];bound=true;$('#stickoff').hidden=false;
+    if(fine){activateStick(name,c);setHint(function(){return reduce
+      ?L3('指针已换成 '+name+' 的应援棒。右键、Esc 或旁边的按钮都可以恢复。','The cursor is now '+name+'’s light stick. Right-click, Esc or the button beside it restores it.','커서가 '+name+'의 응원봉으로 바뀌었습니다. 오른쪽 클릭, Esc 또는 옆 버튼으로 되돌릴 수 있습니다.')
+      :L3('指针已换成 '+name+' 的应援棒,拖尾也变成她的颜色。右键、Esc 或旁边的按钮都可以恢复。','The cursor is now '+name+'’s light stick, and the trail takes her colour. Right-click, Esc or the button beside it restores everything.','커서가 '+name+'의 응원봉으로 바뀌고 트레일도 그녀의 색이 되었습니다. 오른쪽 클릭, Esc 또는 옆 버튼으로 모두 되돌릴 수 있습니다.')})}
+    else{setHint(function(){return L3('应援色换成了 '+name+'。点击页面任意位置,会迸出她颜色的光点。点旁边的按钮可以恢复。','Cheer colour set to '+name+'. Tap anywhere to burst out light points in her colour. Tap the button beside to restore.','응원 색이 '+name+'(으)로 바뀌었습니다. 화면 아무 곳이나 누르면 그 색의 빛이 터져 나옵니다. 옆 버튼으로 되돌릴 수 있습니다.')})}
+    spawn(x,y,28,true);
+  }
+  if(!fine)setHint(function(){return T('点一张成员卡片,换成她的应援色。之后点击页面任意位置,会迸出她颜色的光点。')});
+  document.addEventListener('pointermove',function(e){
+    if(e.pointerType==='touch')return;
+    var x=e.clientX,y=e.clientY;
+    if(stickOn)moveStick(x,y,lx<0?0:x-lx);
+    if(!reduce&&lx>=0){var dx=x-lx,dy=y-ly,d=Math.hypot(dx,dy),steps=Math.min(8,Math.max(1,Math.floor(d/7)));for(var s=1;s<=steps;s++)spawn(lx+dx*s/steps,ly+dy*s/steps,1,false)}
+    lx=x;ly=y;
+  },{passive:true});
+  document.addEventListener('pointerdown',function(e){
+    if(e.target.closest&&e.target.closest('input,textarea,select'))return;
+    spawn(e.clientX,e.clientY,e.pointerType==='touch'?22:16,true);
+  },{passive:true});
+  document.addEventListener('pointerover',function(e){
+    if(!stickOn)return;
+    stick.style.opacity=(e.target.closest&&e.target.closest('input,textarea,select'))?'0':'1';
+  });
+  root.addEventListener('mouseleave',function(){if(stickOn)stick.style.opacity='0'});
+  root.addEventListener('mouseenter',function(){if(stickOn)stick.style.opacity='1'});
+  /* full reset: cursor back to normal AND trail back to the original colours */
+  function resetBinding(){
+    trailCols=TRAIL0.slice();bound=false;
+    parts.forEach(function(p){p.c=TRAIL0[(Math.random()*TRAIL0.length)|0]});
+    if(stickOn)deactivateStick();
+    $('#stickoff').hidden=true;
+    setHint(function(){return fine?T('已全部恢复:普通指针,拖尾也变回最初的彩色。点一张成员卡片可以再换上应援棒。'):T('已全部恢复:彩色光点。点一张成员卡片可以再换她的应援色。')});
+  }
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&bound)resetBinding()});
+  $('#stickoff').addEventListener('click',resetBinding);
+  document.addEventListener('contextmenu',function(e){
+    var t=e.target;if(t.closest&&t.closest('input,textarea,select'))return;
+    if(bound||(t.closest&&t.closest('.card'))){e.preventDefault();if(bound)resetBinding()}
+  });
+
+  /* ===== shop data ===== */
+  var EVENTS={
+    live:{short:'2026.12.16 19:00',long:'2026年12月16日(周三)19:00',gate:'01 区检票',
+      tips:['18:30 起开放探索,从 01 区检票并领取荧光棒。','19:00 开演,请在 18:55 前回到 04 区就座。','演后预留 15 分钟,可去 05 区高层回廊拍照。']},
+    pop:{short:'2026.12.16 12:00–18:00',long:'2026年12月16日(周三)12:00–18:00(示例)',gate:'01 区登记',
+      tips:['限时快闪,记忆街区(02 区)开放,示例时间 12:00–18:00。','周边摊位、饮品小食和休息桌都在这里。','不含公演座位。']}
+  };
+  var GOODS_TIP='周边在 02 区记忆街区的摊位,凭订单号领取。';
+  var TIERS={
+    std:{name:'Neon Live · 现场座席',ev:'live',price:35000,seat:true},
+    vr:{name:'Neon Live · 座席 + VR 体验',ev:'live',price:48000,seat:true},
+    pop:{name:'Memory Street Pop-up · 入场登记',ev:'pop',price:0,seat:false}
+  };
+  var GOODS=[
+    {id:'stick',name:'应援灯棒',en:'Neon Light Stick',price:38000,official:true,desc:'官方应援灯棒。三种灯光模式,长按开关切换。可选团体版或四位成员的个人版。',
+      vars:[{k:'group',n:'团体版',c:'#B9A8FF',img:'m-stick-group'},{k:'thera',n:'Thera',c:'#4D6BFF',img:'m-stick-thera'},{k:'hera',n:'Hera',c:'#FF5CC8',img:'m-stick-hera'},{k:'dawn',n:'Dawn',c:'#E6F04A',img:'m-stick-dawn'},{k:'upi',n:'Upi',c:'#8B5CFF',img:'m-stick-upi'}]},
+    {id:'card',name:'随机成员卡',en:'Random Member Card',price:5000,official:true,desc:'随机抽取一位成员的收藏卡,Thera、Hera、Dawn、Upi 四选一。',vars:[{k:'rand',n:'随机一张',c:'#35E3F5',img:'m-cards'}]},
+    {id:'stand',name:'限定亚克力立牌',en:'Limited Acrylic Stand',price:12000,official:true,desc:'限定亚克力立牌,四位成员站在同一块底座上。',vars:[{k:'group',n:'四人合影款',c:'#35E3F5',img:'m-stand-group'}]},
+    {id:'key',name:'成员应援钥匙扣',en:'Member Keychain',price:9000,official:false,desc:'概念设计稿里的成员钥匙扣,四款成员头像各一个。示例商品。',vars:[{k:'set',n:'四款随机',c:'#F052C8',img:'m-keychain'}]},
+    {id:'band',name:'硅胶应援手环',en:'Silicone Band',price:6000,official:false,desc:'四种成员颜色的硅胶手环,概念设计稿。示例商品。',vars:[{k:'rand',n:'随机颜色',c:'#9BE23A',img:'m-band'}]},
+    {id:'lan',name:'应援挂绳',en:'Lanyard',price:7000,official:false,desc:'印有 SILENT OVERTURE 标识的挂绳,概念设计稿。示例商品。',vars:[{k:'one',n:'标准款',c:'#6C3BF5',img:'m-lanyard'}]}
+  ];
+  GOODS.forEach(function(g){g.v=0});
+  function gimg(g){return 'assets/'+g.vars[g.v].img+'.jpg'}
+  function money(n){return n===0?T('免费'):'₩'+n.toLocaleString('en-US')}
+
+  /* ===== toast ===== */
+  var toastT=0;
+  function toast(msg){var t=$('#toast');t.textContent=msg;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('on')},2400)}
+
+  /* ===== cart ===== */
+  var cart=[];
+  function cartAdd(line){
+    var f=cart.filter(function(l){return l.key===line.key})[0];
+    if(f){f.qty=Math.min(f.max,f.qty+line.qty)}else{cart.push(line)}
+    renderCart();toast(T('已加入购物车:')+T(line.name)+' × '+line.qty);
+  }
+  function sumOf(kind){return cart.reduce(function(a,l){return a+(kind&&l.kind!==kind?0:l.price*l.qty)},0)}
+  function lsub(l){return l.kind==='t'?EVENTS[TIERS[l.tier].ev].short:T(l.vn)+' · '+money(l.price)}
+  function renderCart(){
+    var box=$('#cartlines');box.textContent='';
+    if(!cart.length){box.appendChild(el('p','cart-empty',T('购物车是空的。上面选一个票档,或者在周边展示里挑一件。')))}
+    cart.forEach(function(l,i){
+      var row=el('div','cl'),im=el('img');im.src=l.img;im.alt='';im.width=54;im.height=54;
+      var nm=el('div','nm');nm.appendChild(el('b',null,T(l.name)));nm.appendChild(el('small',null,lsub(l)));
+      var ctl=el('div','ctl'),q=el('div','qty'),mi=el('button',null,'−'),ou=el('output',null,String(l.qty)),pl=el('button',null,'+');
+      mi.type='button';pl.type='button';mi.setAttribute('aria-label',T('减少')+' '+T(l.name));pl.setAttribute('aria-label',T('增加')+' '+T(l.name));
+      mi.addEventListener('click',function(){if(l.qty>1){l.qty--;renderCart()}});
+      pl.addEventListener('click',function(){if(l.qty<l.max){l.qty++;renderCart()}});
+      q.appendChild(mi);q.appendChild(ou);q.appendChild(pl);
+      var rm=el('button','x',T('移除'));rm.type='button';rm.setAttribute('aria-label',T('移除')+' '+T(l.name));
+      rm.addEventListener('click',function(){cart.splice(i,1);renderCart()});
+      ctl.appendChild(q);ctl.appendChild(rm);
+      row.appendChild(im);row.appendChild(nm);row.appendChild(el('div','lp',money(l.price*l.qty)));row.appendChild(ctl);
+      box.appendChild(row);
+    });
+    var n=cart.reduce(function(a,l){return a+l.qty},0),nt=cart.some(function(l){return l.kind==='t'}),ng=cart.some(function(l){return l.kind==='g'});
+    $('#cart-n').textContent='('+n+')';$('#ct-t').textContent=money(sumOf('t'));$('#ct-g').textContent=money(sumOf('g'));$('#ct-a').textContent=money(sumOf());
+    $('#co-all').disabled=!cart.length;$('#co-t').disabled=!nt;$('#co-g').disabled=!ng;
+    $('#navn').textContent=n;$('#fabn').textContent=n;$('#fabt').textContent=money(sumOf());
+    syncFab();
+  }
+  var cartSeen=false;
+  function syncFab(){$('#cartfab').hidden=!cart.length||cartSeen}
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){cartSeen=es[0].isIntersecting;syncFab()},{threshold:.15}).observe($('#cartbox'))}
+
+  /* ===== ticket picker ===== */
+  var qty=1,form=$('#orderform');
+  function curKey(){return $('input[name="tier"]:checked').value}
+  function render(){
+    var t=TIERS[curKey()];
+    $('#s-name').textContent=T(t.name);$('#s-qty').textContent=L3(qty+' 张',qty+(qty>1?' tickets':' ticket'),qty+'장');$('#qty').textContent=qty;
+    $('#s-when').textContent=EVENTS[t.ev].short;$('#s-total').textContent=money(t.price*qty);
+  }
+  $$('input[name="tier"]').forEach(function(r){r.addEventListener('change',render)});
+  $('#q-minus').addEventListener('click',function(){if(qty>1){qty--;render()}});
+  $('#q-plus').addEventListener('click',function(){if(qty<4){qty++;render()}});
+  $('#addticket').addEventListener('click',function(){
+    var k=curKey(),t=TIERS[k];
+    cartAdd({key:'t:'+k,kind:'t',tier:k,name:t.name,sub:EVENTS[t.ev].short,price:t.price,qty:qty,max:4,img:'assets/poster.jpg'});
+    qty=1;render();
+  });
+  function setPrivacy(){$('#privacy').textContent=T(LIVE?'邮箱用于发送确认邮件。手机号只用于下面的短信预览,不会发送。':'邮箱和手机号只用来生成下面的预览,页面不会保存,也不会发给任何人。')}
+  setPrivacy();
+  render();renderCart();
+
+  /* ===== 3D goods ring ===== */
+  var stage=$('#ringstage'),TAU=Math.PI*2,N=GOODS.length,STEP=TAU/N,rot=0,rv=0,sel=-1,gotoR=null,dragging=false,hover=false,focusIn=false,ringVis=false,ringRaf=0,rLast=0,IW=200,RX=300,frontI=-1;
+  var AUTO=-0.24;
+  var tiles=GOODS.map(function(g,i){
+    var b=el('button','ri');b.type='button';
+    var im=el('img');im.alt='';im.draggable=false;im.src=gimg(g);im.width=200;im.height=260;
+    b.appendChild(im);b.appendChild(el('span','rnm',g.name));stage.appendChild(b);return b;
+  });
+  function tilesLabel(t,i){var g=GOODS[i];t.setAttribute('aria-label',T(g.name)+', '+money(g.price)+', '+T('点击放大选购'));t.querySelector('.rnm').textContent=T(g.name)}
+  tiles.forEach(function(t,i){tilesLabel(t,i)});
+  function wrapA(a){a=a%TAU;if(a>Math.PI)a-=TAU;if(a<-Math.PI)a+=TAU;return a}
+  function layoutRing(){var w=stage.clientWidth;IW=clamp(w*0.2,104,210);RX=Math.min(w*0.36,430);stage.style.setProperty('--iw',IW+'px')}
+  function placeRing(){
+    var best=-2,bi=0;
+    tiles.forEach(function(t,i){
+      var th=i*STEP+rot,sn=Math.sin(th),cs=Math.cos(th),depth=(cs+1)/2;
+      var spread=sel>=0?1.2:1,x=RX*sn*spread,y=-(1-depth)*34;
+      var sc=0.52+0.48*depth,op=0.3+0.7*Math.pow(depth,1.3),bl=(1-depth)*3.4;
+      if(sel>=0){if(i===sel){sc*=1.5;op=1;bl=0}else{sc*=0.78;op*=0.5}}
+      t.style.transform='translate(-50%,-50%) translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0) rotateY('+(-sn*30).toFixed(1)+'deg) scale('+sc.toFixed(3)+')';
+      t.style.opacity=op.toFixed(3);t.style.filter=bl>0.15?'blur('+bl.toFixed(2)+'px)':'none';
+      t.style.zIndex=Math.round(depth*100)+(i===sel?100:0);
+      if(cs>best){best=cs;bi=i}
+    });
+    if(bi!==frontI){
+      frontI=bi;tiles.forEach(function(t,i){t.classList.toggle('front',i===bi)});
+      var g=GOODS[bi];$('#ringlbl').textContent='';var lb=$('#ringlbl');lb.appendChild(document.createTextNode(LANG==='en'?g.en:T(g.name)+' · '+g.en));lb.appendChild(el('em',null,money(g.price)));
+    }
+  }
+  function ringStep(now){
+    ringRaf=0;var dt=Math.min(0.05,((now-rLast)/1000)||0.016);rLast=now;
+    var auto=(reduce||sel>=0)?0:AUTO*((hover||focusIn)?0.25:1);
+    if(dragging){/* rot follows the pointer */}
+    else if(gotoR!==null){var d=wrapA(gotoR-rot);if(reduce){rot=gotoR;gotoR=null}else{rot+=d*(1-Math.exp(-dt*5.5));if(Math.abs(d)<0.0008){rot=gotoR;gotoR=null}}rv=0}
+    else{rv+=(auto-rv)*(1-Math.exp(-dt*2.2));rot+=rv*dt}
+    placeRing();
+    if(ringVis)ringRaf=requestAnimationFrame(ringStep);
+  }
+  function kickRing(){if(!ringRaf){rLast=performance.now();ringRaf=requestAnimationFrame(ringStep)}}
+  layoutRing();placeRing();
+  window.addEventListener('resize',function(){layoutRing();placeRing()});
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){ringVis=es[0].isIntersecting;if(ringVis)kickRing()},{threshold:0}).observe(stage)}else{ringVis=true;kickRing()}
+
+  var dx0=0,dxLast=0,tLast=0,moved=false,downTile=null,pid=null;
+  stage.addEventListener('pointerdown',function(e){
+    if(e.target.closest('.rb')||(e.pointerType==='mouse'&&e.button!==0))return;
+    pid=e.pointerId;dx0=dxLast=e.clientX;tLast=performance.now();moved=false;downTile=e.target.closest('.ri');dragging=false;
+    try{stage.setPointerCapture(pid)}catch(_){}
+  });
+  stage.addEventListener('pointermove',function(e){
+    if(e.pointerId!==pid)return;
+    if(!moved&&Math.abs(e.clientX-dx0)>6){moved=true;dragging=true;gotoR=null;stage.classList.add('drag');if(sel>=0)closeDetail()}
+    if(!dragging)return;
+    var now=performance.now(),dx=e.clientX-dxLast,dt=Math.max(8,now-tLast)/1000;
+    rot+=dx/RX;rv=rv*0.6+(dx/RX/dt)*0.4;dxLast=e.clientX;tLast=now;kickRing();
+  });
+  function endPtr(e){
+    if(e.pointerId!==pid)return;pid=null;
+    try{stage.releasePointerCapture(e.pointerId)}catch(_){}
+    stage.classList.remove('drag');
+    if(!moved&&downTile&&e.type==='pointerup')selectItem(tiles.indexOf(downTile));
+    if(dragging&&performance.now()-tLast>120)rv=0;
+    rv=clamp(rv,-6,6);dragging=false;downTile=null;kickRing();
+  }
+  stage.addEventListener('pointerup',endPtr);stage.addEventListener('pointercancel',endPtr);
+  stage.addEventListener('mouseenter',function(){hover=true});stage.addEventListener('mouseleave',function(){hover=false});
+  stage.addEventListener('focusin',function(){focusIn=true});stage.addEventListener('focusout',function(){focusIn=false});
+  tiles.forEach(function(t,i){t.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();selectItem(i)}})});
+  $('#ring').addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight')stepRing(1);else if(e.key==='ArrowLeft')stepRing(-1);else if(e.key==='Escape'&&sel>=0)closeDetail(true);else return;
+    e.preventDefault();
+  });
+  function stepRing(dir){
+    if(sel>=0){selectItem((sel+dir+N)%N,true)}
+    else{gotoR=rot+dir*STEP*-1;rv=0;kickRing()}
+  }
+  $('#rprev').addEventListener('click',function(){stepRing(-1)});
+  $('#rnext').addEventListener('click',function(){stepRing(1)});
+
+  /* ===== item detail ===== */
+  var gq=1;
+  function selectItem(i,keepScroll){
+    if(i<0)return;
+    sel=i;gotoR=rot+wrapA(-i*STEP-rot);gq=1;kickRing();showDetail();
+    var d=$('#gdetail');
+    if(!keepScroll){var r=d.getBoundingClientRect();if(r.bottom>window.innerHeight||r.top<0)d.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'})}
+  }
+  function closeDetail(back){sel=-1;$('#gdetail').hidden=true;kickRing();if(back===true)stage.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'})}
+  function showDetail(){
+    var g=GOODS[sel],d=$('#gdetail');d.hidden=false;
+    $('#gd-img').src=gimg(g);$('#gd-img').alt=T(g.name);
+    $('#gd-en').textContent=g.en;$('#gd-name').textContent=T(g.name);$('#gd-desc').textContent=T(g.desc);
+    $('#gd-price').textContent=money(g.price);$('#gd-tag').textContent=T(g.official?'官网周边价':'概念设计 · 示例价');
+    $('#gq').textContent=gq;
+    var vb=$('#gd-vars');vb.textContent='';
+    g.vars.forEach(function(v,vi){
+      var b=el('button',null,T(v.n));b.type='button';b.style.setProperty('--c',v.c);b.setAttribute('aria-pressed',String(vi===g.v));
+      var dot=el('i');b.insertBefore(dot,b.firstChild);
+      b.addEventListener('click',function(){g.v=vi;tiles[sel].firstChild.src=gimg(g);showDetail()});
+      vb.appendChild(b);
+    });
+  }
+  $('#gq-minus').addEventListener('click',function(){if(gq>1){gq--;$('#gq').textContent=gq}});
+  $('#gq-plus').addEventListener('click',function(){if(gq<10){gq++;$('#gq').textContent=gq}});
+  $('#gd-close').addEventListener('click',function(){closeDetail(true)});
+  $('#gd-add').addEventListener('click',function(){
+    if(sel<0)return;var g=GOODS[sel],v=g.vars[g.v];
+    cartAdd({key:'g:'+g.id+':'+v.k,kind:'g',name:g.name,vn:v.n,sub:'',price:g.price,qty:gq,max:10,img:gimg(g)});
+    gq=1;$('#gq').textContent=1;
+  });
+
+  /* ===== checkout ===== */
+  var lastO=null,statKey='',statMail='';
+  function seatStr(l){
+    if(!l.hasSeat)return T('无座位(自由参观)');
+    var r=l.row,a=l.s0,rng=a+(l.qty>1?'–'+(a+l.qty-1):'');
+    return L3('04 区 · 第 '+r+' 排 '+rng+' 座','Zone 04 · Row '+r+', seat '+rng,'04구역 · '+r+'열 '+rng+'번');
+  }
+  function makeOrder(lines){
+    var id='SO-'+Math.random().toString(36).slice(2,8).toUpperCase(),n=parseInt(id.slice(3),36)||7;
+    var tix=lines.filter(function(l){return l.kind==='t'}),gds=lines.filter(function(l){return l.kind==='g'});
+    tix.forEach(function(l,i){
+      var t=TIERS[l.tier];l.hasSeat=!!t.seat;
+      if(t.seat){l.row=1+(n+i*3)%14;l.s0=1+Math.floor((n+i*5)/14)%18}
+    });
+    var tt=tix.reduce(function(a,l){return a+l.price*l.qty},0),gt=gds.reduce(function(a,l){return a+l.price*l.qty},0);
+    return{id:id,tix:tix,gds:gds,tt:tt,gt:gt,total:tt+gt,name:$('#f-name').value.trim(),email:$('#f-mail').value.trim(),tel:$('#f-tel').value.trim(),cheer:cheer.name};
+  }
+  function evKeys(o){var k=[];o.tix.forEach(function(l){var e=TIERS[l.tier].ev;if(k.indexOf(e)<0)k.push(e)});return k}
+  function compose(o){
+    var id=o.id,zh=LANG==='zh',colon=zh?':':': ';
+    var subject=L3('【未启之音】订单 '+id+' 已确认(演示)','[Silent Overture] Order '+id+' confirmed (demo)','[사일런트 오버추어] 주문 '+id+' 확인 (데모)');
+    var rows=[[T('订单号'),id]];
+    o.tix.forEach(function(l){var ev=EVENTS[TIERS[l.tier].ev];rows.push([T('票务'),T(l.name)+' × '+l.qty]);rows.push([T('场次'),T(ev.long)]);rows.push([T('座位'),seatStr(l)])});
+    o.gds.forEach(function(l){rows.push([T('周边'),T(l.name)+' ('+T(l.vn)+') × '+l.qty])});
+    if(o.gds.length)rows.push([T('周边领取'),T('02 区记忆街区摊位,凭订单号')]);
+    if(o.tix.length&&o.gds.length){rows.push([T('票务小计'),money(o.tt)]);rows.push([T('周边小计'),money(o.gt)])}
+    rows.push([T('合计'),money(o.total)]);
+    if(o.tix.length)rows.push([T('应援色'),o.cheer]);
+    var tips=[];evKeys(o).forEach(function(k){EVENTS[k].tips.forEach(function(t){tips.push(T(t))})});
+    if(o.gds.length)tips.push(T(GOODS_TIP));
+    var fine=T('这是课程概念提案里的演示订单,没有真实活动和扣款,请勿前往场地。');
+    var names=o.tix.concat(o.gds).map(function(l){return T(l.name)+'×'+l.qty}).join(zh?'、':', ');
+    var sms=L3('【未启之音】订单'+id+'已确认:'+names+'。演示短信,非真实订单。','[Silent Overture] Order '+id+' confirmed: '+names+'. Demo SMS, not a real order.','[사일런트 오버추어] 주문 '+id+' 확인: '+names+'. 데모 문자이며 실제 주문이 아닙니다.');
+    var hello=T('你好 ')+o.name+(zh?',':',');
+    var text=hello+'\n'+T('你的订单已确认(演示)。')+'\n\n'+rows.map(function(r){return r[0]+colon+r[1]}).join('\n')+'\n\n'+T('须知')+colon+'\n- '+tips.join('\n- ')+'\n\n'+fine;
+    return{subject:subject,rows:rows,tips:tips,fine:fine,sms:sms,text:text,names:names,hello:hello};
+  }
+  function fill(o,m){
+    var parts=[];if(o.tix.length)parts.push(L3('电子票','e-tickets','전자 티켓'));if(o.gds.length)parts.push(L3('周边','goods','굿즈'));
+    $('#done-sub').textContent=L3('订单 '+o.id+' · '+parts.join(' + ')+' · 下面是确认邮件和短信的预览','Order '+o.id+' · '+parts.join(' + ')+' · below is a preview of the confirmation email and SMS','주문 '+o.id+' · '+parts.join(' + ')+' · 아래는 확인 메일과 문자의 미리보기입니다');
+    var et=$('#etickets');et.textContent='';
+    o.tix.forEach(function(l){
+      var t=TIERS[l.tier],ev=EVENTS[t.ev],card=el('div','eticket'),top=el('div','top2');
+      top.style.background=cheer.c;top.appendChild(el('span',null,'E-TICKET · '+L3('示例','SAMPLE','예시')));top.appendChild(el('span',null,o.id));
+      card.appendChild(top);card.appendChild(el('h4',null,T(l.name)+(l.qty>1?' × '+l.qty:'')));
+      var dl=el('dl');[[T('观演人'),o.name],[T('场次'),ev.short],[T('入口'),T(ev.gate)],[T('座位'),seatStr(l)],[T('应援色'),o.cheer]].forEach(function(r){var d=el('div');d.appendChild(el('dt',null,r[0]));d.appendChild(el('dd',null,r[1]));dl.appendChild(d)});
+      card.appendChild(dl);var bc=el('div','barcode');bc.setAttribute('aria-hidden','true');card.appendChild(bc);et.appendChild(card);
+    });
+    var rc=$('#receipt');rc.textContent='';
+    if(o.gds.length){
+      var box=el('div','receipt');box.appendChild(el('h4',null,T('GOODS · 周边取货单')));
+      var ul=el('ul');o.gds.forEach(function(l){var li=el('li');li.appendChild(el('span',null,T(l.name)+' ('+T(l.vn)+') × '+l.qty));li.appendChild(el('b',null,money(l.price*l.qty)));ul.appendChild(li)});
+      box.appendChild(ul);box.appendChild(el('p',null,T(GOODS_TIP)+' '+L3('订单号 ','Order no. ','주문 번호 ')+o.id+'.'));rc.appendChild(box);
+    }
+    var pm=$('#pane-mail');pm.textContent='';
+    var mail=el('div','mail'),hd=el('div','hd');
+    [[T('发件人'),L3('SILENT OVERTURE 票务','SILENT OVERTURE Tickets','SILENT OVERTURE 티켓')+' <tickets@silent-overture.example>'],[T('收件人'),o.email],[T('主题'),m.subject]].forEach(function(r){var p=el('p');p.appendChild(el('span',null,r[0]+' '));p.appendChild(el('b',null,r[1]));hd.appendChild(p)});
+    var bd=el('div','bd');
+    bd.appendChild(el('p',null,m.hello));bd.appendChild(el('p',null,T('你的订单已确认(演示)。')));
+    var tb=el('table');m.rows.forEach(function(r){var tr=el('tr');tr.appendChild(el('td',null,r[0]));tr.appendChild(el('td',null,r[1]));tb.appendChild(tr)});bd.appendChild(tb);
+    bd.appendChild(el('p',null,T('须知')));var ul2=el('ul');m.tips.forEach(function(t){ul2.appendChild(el('li',null,t))});bd.appendChild(ul2);
+    bd.appendChild(el('p','fine',m.fine));
+    mail.appendChild(hd);mail.appendChild(bd);pm.appendChild(mail);
+    var ps=$('#pane-sms');ps.textContent='';
+    var sw=el('div','sms');sw.appendChild(el('p','who',T('收件人')+' '+(o.tel||'('+T('未填写手机号')+')')+' · '+T('模拟预览')));sw.appendChild(el('p','bub',m.sms));ps.appendChild(sw);
+  }
+  function setStatus(k,mail){
+    statKey=k;statMail=mail||'';
+    var txt={
+      sending:L3('正在发送确认邮件到 '+statMail+' …','Sending the confirmation email to '+statMail+' …',statMail+'(으)로 확인 메일을 보내는 중…'),
+      ok:L3('确认邮件已发送到 '+statMail+'。短信只做了预览,没有发送。','The confirmation email was sent to '+statMail+'. The SMS is only a preview and was not sent.','확인 메일을 '+statMail+'(으)로 보냈습니다. 문자는 미리보기일 뿐 발송되지 않았습니다.'),
+      fail:T('邮件没有发送成功。请检查 EmailJS 的设置,或稍后再试。'),
+      demo:T('演示模式:邮件和短信只在这里预览,没有真正发出。部署版填入 EmailJS 设置后,邮件可以真实发送。')
+    }[k]||'';
+    var s=$('#status');s.textContent=txt;s.className='status'+(k==='ok'?' ok':'');
+  }
+  function loadSdk(){
+    if(window.emailjs)return Promise.resolve();
+    return new Promise(function(res,rej){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js';s.onload=res;s.onerror=function(){rej(new Error('sdk'))};document.head.appendChild(s)});
+  }
+  function sendReal(o,m){
+    var shows=evKeys(o).map(function(k){return T(EVENTS[k].long)}).join(' / ')||'-',seats=o.tix.map(seatStr).join(' / ')||'-';
+    var q=o.tix.concat(o.gds).reduce(function(a,l){return a+l.qty},0);
+    return loadSdk().then(function(){
+      return window.emailjs.send(EMAILJS.serviceId,EMAILJS.templateId,{
+        to_name:o.name,to_email:o.email,order_id:o.id,ticket_name:m.names,qty:String(q),total:money(o.total),
+        show_time:shows,seats:seats,cheer:o.cheer,subject:m.subject,message:m.text
+      },{publicKey:EMAILJS.publicKey});
+    });
+  }
+  function selectTab(which){
+    var mail=which==='mail';
+    $('#tab-mail').setAttribute('aria-selected',String(mail));$('#tab-sms').setAttribute('aria-selected',String(!mail));
+    $('#pane-mail').hidden=!mail;$('#pane-sms').hidden=mail;
+  }
+  $('#tab-mail').addEventListener('click',function(){selectTab('mail')});
+  $('#tab-sms').addEventListener('click',function(){selectTab('sms')});
+
+  function checkout(scope){
+    var lines=cart.filter(function(l){return scope==='all'||(scope==='t'?l.kind==='t':l.kind==='g')});
+    if(!lines.length){toast(T('没有可结算的内容'));return}
+    if(!form.reportValidity())return;
+    var o=makeOrder(lines);lastO=o;
+    cart=cart.filter(function(l){return lines.indexOf(l)<0});renderCart();
+    var m=compose(o);fill(o,m);selectTab('mail');
+    var d=$('#done');d.hidden=false;
+    if(LIVE){
+      setStatus('sending',o.email);
+      sendReal(o,m).then(function(){setStatus('ok',o.email)}).catch(function(){setStatus('fail')});
+    }else{setStatus('demo')}
+    d.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    $('#done-h').focus({preventScroll:true});
+  }
+  $('#co-all').addEventListener('click',function(){checkout('all')});
+  $('#co-t').addEventListener('click',function(){checkout('t')});
+  $('#co-g').addEventListener('click',function(){checkout('g')});
+  form.addEventListener('submit',function(e){e.preventDefault();checkout('all')});
+  $('#again').addEventListener('click',function(){
+    $('#done').hidden=true;
+    $('#goods').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  });
+
+  /* ===== language switch ===== */
+  function applyStatic(){
+    STATIC.forEach(function(r){
+      if(r.n){var lead=r.zh.match(/^\s*/)[0],trail=r.zh.match(/\s*$/)[0];r.n.nodeValue=lead+T(r.k)+trail}
+      else r.e.setAttribute(r.a,T(r.k));
+    });
+    document.title=T('未启之音');
+  }
+  function retextHeading(h){var zh=h.dataset.zh;if(zh!=null)splitText(h,T(zh),true)}
+  function applyLang(l){
+    LANG=l;root.lang=l;
+    try{localStorage.setItem('so-lang',l)}catch(_){}
+    $$('.lang button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.l===l))});
+    applyStatic();marqs.forEach(buildMarq);
+    SP.forEach(function(it){retextHeading(it.e)});HERO.forEach(retextHeading);
+    buildZoneBtns();showZone(curZone);buildBar();showSeg(curSeg);
+    setCheerLbl();if(hintFn)setHint(hintFn);
+    setPrivacy();render();renderCart();
+    tiles.forEach(function(t,i){tilesLabel(t,i)});frontI=-1;placeRing();
+    if(sel>=0)showDetail();
+    if(lastO&&!$('#done').hidden){var m=compose(lastO);fill(lastO,m);setStatus(statKey,statMail)}
+    var ck=$('#cartfab');
+  }
+  $$('.lang button').forEach(function(b){b.addEventListener('click',function(){applyLang(b.dataset.l)})});
+  var storedLang='';try{storedLang=localStorage.getItem('so-lang')||''}catch(_){}
+  if(!storedLang){var nl=(navigator.language||'').toLowerCase();/* default stays Chinese unless the visitor has chosen another language */}
+  if(storedLang==='en'||storedLang==='ko')applyLang(storedLang);
+
+
+  /* ===== opening loader ===== */
+  function runLoader(done){
+    var ld=$('#loader');
+    if(!ld)return done();
+    if(reduce){ld.remove();return done()}
+    root.classList.add('loading');
+    var num=$('.ld-num b',ld),bar=$('.ld-bar i',ld),t0=performance.now(),D=1900,fin=false;
+    function end(){
+      if(fin)return;fin=true;
+      num.textContent='100';bar.style.transform='scaleX(1)';ld.classList.add('out');root.classList.remove('loading');
+      setTimeout(function(){ld.remove()},1300);setTimeout(done,420);
+    }
+    function tick(now){
+      if(fin)return;
+      var t=Math.min(1,(now-t0)/D),v=Math.round((1-Math.pow(1-t,2.2))*100);
+      if(v>=100&&document.readyState!=='complete')v=99;
+      num.textContent=String(v).padStart(3,'0');bar.style.transform='scaleX('+(v/100)+')';
+      if(v>=100){setTimeout(end,260)}else requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    setTimeout(end,6000);
+    $('.ld-skip',ld).addEventListener('click',end);
+  }
+  runLoader(revealHero);
+})();
+</script>
+
+<style>
+.version-switch {
+  position: fixed;
+  right: 16px;
+  bottom: 20px;
+  z-index: 9999;
+  display: flex;
+  gap: 4px;
+  padding: 5px;
+  border: 1px solid #bbb;
+  border-radius: 30px;
+  background: #fff;
+  box-shadow: 0 4px 16px #0002;
+  font: 14px/1.5 sans-serif;
+}
+.version-switch a {
+  padding: 7px 14px;
+  border-radius: 24px;
+  color: #333;
+  text-decoration: none;
+}
+.version-switch a[aria-current="page"] {
+  background: #2338e0;
+  color: #fff;
+}
+</style>
+  
+</body></html>
